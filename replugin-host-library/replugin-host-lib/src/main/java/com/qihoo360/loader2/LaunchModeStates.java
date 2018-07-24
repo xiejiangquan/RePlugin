@@ -17,16 +17,12 @@
 package com.qihoo360.loader2;
 
 import android.content.pm.ActivityInfo;
-
 import com.qihoo360.loader2.PluginContainers.ActivityState;
 import com.qihoo360.replugin.RePlugin;
 import com.qihoo360.replugin.helper.LogDebug;
-
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-
-import static com.qihoo360.replugin.helper.LogDebug.LOG;
 
 /**
  * 存储 LaunchMode + Theme -> 此种组合下的 ActivityState 状态集合
@@ -36,6 +32,27 @@ import static com.qihoo360.replugin.helper.LogDebug.LOG;
 class LaunchModeStates {
 
     public static final String TAG = "launchMode";
+
+    //坑类型
+    enum ThemeType {
+        noTheme(1),//无主题
+        translucent(2),//透明主题
+        notTranslucent(3),;//非透明主题
+
+        int value;
+
+        ThemeType(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
+
+        public void setValue(int value) {
+            this.value = value;
+        }
+    }
 
     /**
      * 目前的策略是，针对每一种 launchMode 分配两种坑位（透明主题(TS)和不透明主题(NTS)）
@@ -60,11 +77,12 @@ class LaunchModeStates {
      * @param containers  保存所有 activity 坑位的引用
      * @param prefix      坑位前缀
      * @param launchMode  launchMode
-     * @param translucent 是否是透明的坑
+     //* @param translucent 是否是透明的坑
+     * @param themeType 坑类型
      * @param count       坑位数
      */
-    void addStates(Map<String, ActivityState> allStates, HashSet<String> containers, String prefix, int launchMode, boolean translucent, int count) {
-        String infix = getInfix(launchMode, translucent);
+    void addStates(Map<String, ActivityState> allStates, HashSet<String> containers, String prefix, int launchMode, ThemeType themeType, int count) {
+        String infix = getInfix(launchMode, themeType == ThemeType.translucent, themeType == ThemeType.noTheme);
         HashMap<String, ActivityState> states = mStates.get(infix);
         if (states == null) {
             states = new HashMap<>();
@@ -89,8 +107,8 @@ class LaunchModeStates {
     /**
      * 根据 launchMode 和 theme 获取对应的坑位集合
      */
-    HashMap<String, ActivityState> getStates(int launchMode, int theme) {
-        String infix = getInfix(launchMode, isTranslucentTheme(theme));
+    HashMap<String, ActivityState> getStates(int launchMode, int theme, boolean noThemeAlloc) {
+        String infix = getInfix(launchMode, isTranslucentTheme(theme), noThemeAlloc);
         return mStates.get(infix);
     }
 
@@ -99,8 +117,11 @@ class LaunchModeStates {
      *
      * @return 如果是透明主题，返回 'launchMode'_TS_，否则返回 'launchMode'_NOT_TS_
      */
-    private static String getInfix(int launchMode, boolean translucent) {
+    private static String getInfix(int launchMode, boolean translucent, boolean noThemeAlloc) {
         String launchModeInfix = getLaunchModeInfix(launchMode);
+        if (noThemeAlloc) {
+            return launchModeInfix + "NTM";
+        }
         return translucent ? launchModeInfix + "TS" : launchModeInfix + "NTS";
     }
 
