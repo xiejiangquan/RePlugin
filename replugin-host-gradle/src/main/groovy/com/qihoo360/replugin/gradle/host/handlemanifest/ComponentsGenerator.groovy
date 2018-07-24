@@ -98,6 +98,41 @@ class ComponentsGenerator {
                     "${name}":"com.qihoo360.replugin.component.service.server.PluginPitServiceGuard",
                     "${process}":"${pluginMgrProcessName}")
 
+            /* 无主题坑 NTM*/
+            config.countTranslucentStandard.times {
+                activity(
+                    "${name}": "${applicationID}.${infix}N1NRNTM${it}",
+                    "${cfg}": "${cfgV}",
+                    "${exp}": "${expV}",
+                    "${ori}": "${oriV}"
+                )
+            }
+            config.countTranslucentSingleTop.times {
+                activity(
+                    "${name}": "${applicationID}.${infix}N1STPNTM${it}",
+                    "${cfg}": "${cfgV}",
+                    "${exp}": "${expV}",
+                    "${ori}": "${oriV}",
+                    "${launchMode}": "singleTop"
+                )
+            }
+            config.countTranslucentSingleTask.times {
+                activity(
+                    "${name}": "${applicationID}.${infix}N1STNTM${it}",
+                    "${cfg}": "${cfgV}",
+                    "${exp}": "${expV}",
+                    "${ori}": "${oriV}",
+                    "${launchMode}": "singleTask")
+            }
+            config.countTranslucentSingleInstance.times {
+                activity(
+                    "${name}": "${applicationID}.${infix}N1SINTM${it}",
+                    "${cfg}": "${cfgV}",
+                    "${exp}": "${expV}",
+                    "${ori}": "${oriV}",
+                    "${launchMode}": "singleInstance")
+            }
+
             /* 透明坑 */
             config.countTranslucentStandard.times {
                 activity(
@@ -172,9 +207,44 @@ class ComponentsGenerator {
                         "${launchMode}": "singleInstance")
             }
 
+
+
             /* TaskAffinity */
             // N1TA0NRTS1：UI进程->第0组->standardMode->透明主题->第1个坑位 (T: Task, NR: Standard, TS: Translucent)
             config.countTask.times { i ->
+
+                /* 无主题坑 NTM*/
+                config.countTranslucentStandard.times { j ->
+                    activity(
+                        "${name}": "${applicationID}.${infix}N1TA${i}NRNTM${j}",
+                        "${cfg}": "${cfgV}",
+                        "${exp}": "${expV}",
+                        "${ori}": "${oriV}",
+                        "${theme}": "${themeTS}",
+                        "${task}": ":t${i}")
+                }
+                config.countTranslucentSingleTop.times { j ->
+                    activity(
+                        "${name}": "${applicationID}.${infix}N1TA${i}STPNTM${j}",
+                        "${cfg}": "${cfgV}",
+                        "${exp}": "${expV}",
+                        "${ori}": "${oriV}",
+                        "${theme}": "${themeTS}",
+                        "${task}": ":t${i}",
+                        "${launchMode}": "singleTop")
+                }
+                config.countTranslucentSingleTask.times { j ->
+                    activity(
+                        "${name}": "${applicationID}.${infix}N1TA${i}STNTM${j}",
+                        "${cfg}": "${cfgV}",
+                        "${exp}": "${expV}",
+                        "${ori}": "${oriV}",
+                        "${theme}": "${themeTS}",
+                        "${task}": ":t${i}",
+                        "${launchMode}": "singleTask")
+                }
+
+                //透明坑
                 config.countTranslucentStandard.times { j ->
                     activity(
                             "${name}": "${applicationID}.${infix}N1TA${i}NRTS${j}",
@@ -205,6 +275,7 @@ class ComponentsGenerator {
                             "${launchMode}": "singleTask")
                 }
 
+                //非透明坑
                 config.countNotTranslucentStandard.times { j ->
                     activity(
                             "${name}": "${applicationID}.${infix}N1TA${i}NRNTS${j}",
@@ -254,9 +325,55 @@ class ComponentsGenerator {
         def writer = new StringWriter()
         def xml = new MarkupBuilder(writer)
 
+
+        println "config.countProcessr = ${config.countProcess}"
+
+
         /* 自定义进程 */
         xml.application {
             config.countProcess.times { p ->
+
+                println "config.countProcessr p = ${p}"
+
+
+                /* 无主题坑 NTM*/
+                config.countTranslucentStandard.times {
+                    activity(
+                        "${name}": "${applicationID}.${infix}P${p}NRNTM${it}",
+                        "${cfg}": "${cfgV}",
+                        "${exp}": "${expV}",
+                        "${ori}": "${oriV}",
+                        "${process}": ":p${p}")
+                }
+                config.countTranslucentSingleTop.times {
+                    activity(
+                        "${name}": "${applicationID}.${infix}P${p}STPNTM${it}",
+                        "${cfg}": "${cfgV}",
+                        "${exp}": "${expV}",
+                        "${ori}": "${oriV}",
+                        "${process}": ":p${p}",
+                        "${launchMode}": "singleTop")
+                }
+                config.countTranslucentSingleTask.times {
+                    activity(
+                        "${name}": "${applicationID}.${infix}P${p}STNTM${it}",
+                        "${cfg}": "${cfgV}",
+                        "${exp}": "${expV}",
+                        "${ori}": "${oriV}",
+                        "${process}": ":p${p}",
+                        "${launchMode}": "singleTask")
+                }
+                config.countTranslucentSingleInstance.times {
+                    activity(
+                        "${name}": "${applicationID}.${infix}P${p}SINTM${it}",
+                        "${cfg}": "${cfgV}",
+                        "${exp}": "${expV}",
+                        "${ori}": "${oriV}",
+                        "${process}": ":p${p}",
+                        "${launchMode}": "singleInstance")
+                }
+
+                //透明坑
                 config.countTranslucentStandard.times {
                     activity(
                             "${name}": "${applicationID}.${infix}P${p}NRTS${it}",
@@ -296,6 +413,8 @@ class ComponentsGenerator {
                             "${process}": ":p${p}",
                             "${launchMode}": "singleInstance")
                 }
+
+                //非透明坑
                 config.countNotTranslucentStandard.times {
                     activity(
                             "${name}": "${applicationID}.${infix}P${p}NRNTS${it}",
@@ -338,6 +457,39 @@ class ComponentsGenerator {
 
                 /* TaskAffinity */
                 config.countTask.times { i ->
+
+                    /* 无主题坑 NTM*/
+                    config.countTranslucentStandard.times { j ->
+                        activity(
+                            "${name}": "${applicationID}.${infix}P${p}TA${i}NRNTM${j}",
+                            "${cfg}": "${cfgV}",
+                            "${exp}": "${expV}",
+                            "${ori}": "${oriV}",
+                            "${process}": ":p${p}",
+                            "${task}": ":t${i}")
+                    }
+                    config.countTranslucentSingleTop.times { j ->
+                        activity(
+                            "${name}": "${applicationID}.${infix}P${p}TA${i}STPNTM${j}",
+                            "${cfg}": "${cfgV}",
+                            "${exp}": "${expV}",
+                            "${ori}": "${oriV}",
+                            "${launchMode}": "singleTop",
+                            "${process}": ":p${p}",
+                            "${task}": ":t${i}")
+                    }
+                    config.countTranslucentSingleTask.times { j ->
+                        activity(
+                            "${name}": "${applicationID}.${infix}P${p}TA${i}STNTM${j}",
+                            "${cfg}": "${cfgV}",
+                            "${exp}": "${expV}",
+                            "${ori}": "${oriV}",
+                            "${launchMode}": "singleTask",
+                            "${process}": ":p${p}",
+                            "${task}": ":t${i}")
+                    }
+
+                    //透明坑
                     config.countTranslucentStandard.times { j ->
                         activity(
                                 "${name}": "${applicationID}.${infix}P${p}TA${i}NRTS${j}",
@@ -370,6 +522,8 @@ class ComponentsGenerator {
                                 "${process}": ":p${p}",
                                 "${task}": ":t${i}")
                     }
+
+                    //非透明坑
                     config.countNotTranslucentStandard.times { j ->
                         activity(
                                 "${name}": "${applicationID}.${infix}P${p}TA${i}NRNTS${j}",
