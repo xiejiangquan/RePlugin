@@ -97,4 +97,9 @@ public abstract class PluginActivityGroup extends ActivityGroup {
 
         super.startActivityForResult(intent, requestCode);
     }
+
+    @Override
+    public void overridePendingTransition(int enterAnim, int exitAnim) {
+        super.overridePendingTransition(IActivityProxy.getHostAnimResId(enterAnim), IActivityProxy.getHostAnimResId(exitAnim));
+    }
 }

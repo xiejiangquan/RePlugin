@@ -101,4 +101,9 @@ public class PluginPreferenceActivity extends PreferenceActivity {
         super.startActivityForResult(intent, requestCode);
 
     }
+
+    @Override
+    public void overridePendingTransition(int enterAnim, int exitAnim) {
+        super.overridePendingTransition(IActivityProxy.getHostAnimResId(enterAnim), IActivityProxy.getHostAnimResId(exitAnim));
+    }
 }
