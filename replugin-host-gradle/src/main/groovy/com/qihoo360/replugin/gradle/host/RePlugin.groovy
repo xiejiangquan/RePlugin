@@ -226,7 +226,7 @@ public class Replugin implements Plugin<Project> {
 class RepluginConfig {
 
     /** 自定义进程的数量(除 UI 和 Persistent 进程) */
-    def countProcess = 3
+    def countProcess = 10
 
     /** 是否使用常驻进程？ */
     def persistentEnable = true
