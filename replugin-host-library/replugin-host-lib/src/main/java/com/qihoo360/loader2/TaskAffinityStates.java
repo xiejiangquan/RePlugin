@@ -65,27 +65,31 @@ class TaskAffinityStates {
 
             LaunchModeStates states = mLaunchModeStates[i];
             /* Standard */
-            states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_MULTIPLE, true, HostConfigHelper.ACTIVITY_PIT_COUNT_TS_STANDARD);
-            states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_MULTIPLE, false, HostConfigHelper.ACTIVITY_PIT_COUNT_NTS_STANDARD);
+            states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_MULTIPLE, LaunchModeStates.ThemeType.noTheme, HostConfigHelper.ACTIVITY_PIT_COUNT_NTM_STANDARD);
+            states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_MULTIPLE, LaunchModeStates.ThemeType.translucent, HostConfigHelper.ACTIVITY_PIT_COUNT_TS_STANDARD);
+            states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_MULTIPLE, LaunchModeStates.ThemeType.notTranslucent, HostConfigHelper.ACTIVITY_PIT_COUNT_NTS_STANDARD);
 
             /* SingleTop */
-            states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_SINGLE_TOP, true, HostConfigHelper.ACTIVITY_PIT_COUNT_TS_SINGLE_TOP);
-            states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_SINGLE_TOP, false, HostConfigHelper.ACTIVITY_PIT_COUNT_NTS_SINGLE_TOP);
+            states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_SINGLE_TOP, LaunchModeStates.ThemeType.noTheme, HostConfigHelper.ACTIVITY_PIT_COUNT_NTM_SINGLE_TOP);
+            states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_SINGLE_TOP, LaunchModeStates.ThemeType.translucent, HostConfigHelper.ACTIVITY_PIT_COUNT_TS_SINGLE_TOP);
+            states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_SINGLE_TOP, LaunchModeStates.ThemeType.notTranslucent, HostConfigHelper.ACTIVITY_PIT_COUNT_NTS_SINGLE_TOP);
 
             /* SingleTask */
-            states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_SINGLE_TASK, true, HostConfigHelper.ACTIVITY_PIT_COUNT_TS_SINGLE_TASK);
-            states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_SINGLE_TASK, false, HostConfigHelper.ACTIVITY_PIT_COUNT_NTS_SINGLE_TASK);
+            states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_SINGLE_TASK, LaunchModeStates.ThemeType.noTheme, HostConfigHelper.ACTIVITY_PIT_COUNT_NTM_SINGLE_TASK);
+            states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_SINGLE_TASK, LaunchModeStates.ThemeType.translucent, HostConfigHelper.ACTIVITY_PIT_COUNT_TS_SINGLE_TASK);
+            states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_SINGLE_TASK, LaunchModeStates.ThemeType.notTranslucent, HostConfigHelper.ACTIVITY_PIT_COUNT_NTS_SINGLE_TASK);
 
             /* SingleInstance */
-            states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_SINGLE_INSTANCE, true, HostConfigHelper.ACTIVITY_PIT_COUNT_TS_SINGLE_INSTANCE);
-            states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_SINGLE_INSTANCE, false, HostConfigHelper.ACTIVITY_PIT_COUNT_NTS_SINGLE_INSTANCE);
+            states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_SINGLE_INSTANCE, LaunchModeStates.ThemeType.noTheme, HostConfigHelper.ACTIVITY_PIT_COUNT_NTM_SINGLE_INSTANCE);
+            states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_SINGLE_INSTANCE, LaunchModeStates.ThemeType.translucent, HostConfigHelper.ACTIVITY_PIT_COUNT_TS_SINGLE_INSTANCE);
+            states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_SINGLE_INSTANCE, LaunchModeStates.ThemeType.notTranslucent, HostConfigHelper.ACTIVITY_PIT_COUNT_NTS_SINGLE_INSTANCE);
         }
     }
 
     /**
      * 根据插件 Activity 的信息，找到宿主对应的坑位集合
      */
-    HashMap<String, PluginContainers.ActivityState> getStates(ActivityInfo ai) {
+    HashMap<String, PluginContainers.ActivityState> getStates(ActivityInfo ai, boolean noThemeAlloc) {
         if (ai != null) {
 
             // 找到应该取第几个 TaskAffinity 中的坑
@@ -98,7 +102,7 @@ class TaskAffinityStates {
 
             LaunchModeStates states = mLaunchModeStates[index];
             if (states != null) {
-                return states.getStates(ai.launchMode, ai.theme);
+                return states.getStates(ai.launchMode, ai.theme, noThemeAlloc);
             }
         }
 

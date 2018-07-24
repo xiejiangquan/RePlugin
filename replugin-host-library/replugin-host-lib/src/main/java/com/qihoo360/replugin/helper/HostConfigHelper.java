@@ -43,6 +43,12 @@ public class HostConfigHelper {
     // 常驻进程名
     public static String PERSISTENT_NAME = ":GuardService";
 
+    //无主题坑位
+    public static int ACTIVITY_PIT_COUNT_NTM_STANDARD = 2;
+    public static int ACTIVITY_PIT_COUNT_NTM_SINGLE_TOP = 2;
+    public static int ACTIVITY_PIT_COUNT_NTM_SINGLE_TASK = 2;
+    public static int ACTIVITY_PIT_COUNT_NTM_SINGLE_INSTANCE = 3;
+
     // 背景透明的坑的数量（每种 launchMode 不同）
     public static int ACTIVITY_PIT_COUNT_TS_STANDARD = 2;
     public static int ACTIVITY_PIT_COUNT_TS_SINGLE_TOP = 2;

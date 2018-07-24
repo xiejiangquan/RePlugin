@@ -24,7 +24,6 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
-
 import com.qihoo360.i.IPluginManager;
 import com.qihoo360.loader2.alc.ActivityController;
 import com.qihoo360.replugin.RePlugin;
@@ -37,7 +36,6 @@ import com.qihoo360.replugin.component.service.server.IPluginServiceServer;
 import com.qihoo360.replugin.component.service.server.PluginServiceServer;
 import com.qihoo360.replugin.helper.LogDebug;
 import com.qihoo360.replugin.helper.LogRelease;
-
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -276,6 +274,14 @@ class PluginProcessPer extends IPluginClient.Stub {
                 LogDebug.d(PLUGIN_TAG, "PACM: bindActivity: activity not found: activity=" + activity);
             }
             return null;
+        }
+
+        // 插件 manifest 中设置的 ThemeId
+        int manifestThemeId = intent.getIntExtra(PluginCommImpl.INTENT_KEY_THEME_ID, 0);
+
+        //如果用户只设置动态主题，即没有在manifest设置主题，那么加个标记，在分配坑的时候用
+        if (manifestThemeId == 0) {
+            intent.putExtra(PluginLibraryInternalProxy.FLAG_REPLUGIN_ALLOC_NO_THEME, true);
         }
 
         if (ai.processName == null) {

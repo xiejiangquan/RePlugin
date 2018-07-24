@@ -24,11 +24,9 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
-
 import com.qihoo360.i.Factory;
 import com.qihoo360.i.Factory2;
 import com.qihoo360.i.IPluginManager;
-import com.qihoo360.replugin.utils.ReflectUtils;
 import com.qihoo360.replugin.RePlugin;
 import com.qihoo360.replugin.base.IPC;
 import com.qihoo360.replugin.component.activity.ActivityInjector;
@@ -36,13 +34,12 @@ import com.qihoo360.replugin.helper.HostConfigHelper;
 import com.qihoo360.replugin.helper.LogDebug;
 import com.qihoo360.replugin.helper.LogRelease;
 import com.qihoo360.replugin.model.PluginInfo;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
+import com.qihoo360.replugin.utils.ReflectUtils;
 import java.io.File;
 import java.util.List;
 import java.util.Set;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import static com.qihoo360.i.Factory.loadPluginActivity;
 import static com.qihoo360.replugin.helper.LogDebug.LOG;
@@ -55,6 +52,8 @@ import static com.qihoo360.replugin.helper.LogRelease.LOGR;
  * @author RePlugin Team
  */
 public class PluginLibraryInternalProxy {
+
+    public static final String FLAG_REPLUGIN_ALLOC_NO_THEME = "replugin_alloc_no_theme";
 
     /**
      *
@@ -720,27 +719,50 @@ public class PluginLibraryInternalProxy {
 
         // 插件 manifest 中设置的 ThemeId
         int manifestThemeId = intent.getIntExtra(PluginCommImpl.INTENT_KEY_THEME_ID, 0);
+
+        //如果用户只设置动态主题，即没有在manifest设置主题，那么加个标记，在分配坑的时候用
+        if (dynamicThemeId != -1 && manifestThemeId == 0) {
+            intent.putExtra(FLAG_REPLUGIN_ALLOC_NO_THEME, true);
+        }
+
+        int pluginApplicationThemeId = activity.getApplicationInfo().theme;
+
         //如果插件上没有主题则使用Application节点的Theme
         if (manifestThemeId == 0) {
-            manifestThemeId = activity.getApplicationInfo().theme;
+            manifestThemeId = pluginApplicationThemeId;
+        }
+
+        boolean isDynamicThemeIdValide = false;
+
+        try {
+            String typeName = activity.getResources().getResourceTypeName(dynamicThemeId);
+            if (TextUtils.equals(typeName, "style")) {
+                isDynamicThemeIdValide = true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         // 根据 manifest 中声明主题是否透明，获取默认主题
-        int defaultThemeId = getDefaultThemeId();
-        if (LaunchModeStates.isTranslucentTheme(manifestThemeId)) {
-            defaultThemeId = android.R.style.Theme_Translucent_NoTitleBar;
+        int defaultThemeId = pluginApplicationThemeId;
+
+        if (defaultThemeId <= 0) {
+            defaultThemeId = getDefaultThemeId();
+            if (LaunchModeStates.isTranslucentTheme(manifestThemeId)) {
+                defaultThemeId = android.R.style.Theme_Translucent_NoTitleBar;
+            }
         }
 
         int themeId;
 
         if (LOG) {
             LogDebug.d("theme", "defaultThemeId = " + defaultThemeId);
-            LogDebug.d("theme", "dynamicThemeId = " + dynamicThemeId);
+            LogDebug.d("theme", "dynamicThemeId = " + dynamicThemeId + ", isDynamicThemeIdValide = " + isDynamicThemeIdValide);
             LogDebug.d("theme", "manifestThemeId = " + manifestThemeId);
         }
 
         // 通过反射获取主题成功
-        if (dynamicThemeId != -1) {
+        if (dynamicThemeId != -1 && isDynamicThemeIdValide) {
             // 如果动态主题是默认主题，说明插件未通过代码设置主题，此时应该使用 AndroidManifest 中设置的主题。
             if (dynamicThemeId == defaultThemeId) {
                 // AndroidManifest 中有声明主题
