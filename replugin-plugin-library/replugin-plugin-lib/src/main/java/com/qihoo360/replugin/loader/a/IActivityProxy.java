@@ -1,9 +1,7 @@
 package com.qihoo360.replugin.loader.a;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
-import android.os.Build;
 import com.qihoo360.replugin.RePlugin;
 
 /**
@@ -13,23 +11,12 @@ import com.qihoo360.replugin.RePlugin;
  */
 public class IActivityProxy {
 
-    public static void overridePendingTransition(Activity activity, int enterAnim, int exitAnim) {
+    public static int getHostAnimResId(int anim) {
         final Resources resources = RePlugin.getPluginContext().getResources();
-
-        int enterAnimHost = getHostResId(enterAnim, resources);
-
-        int exitAnimHost = getHostResId(exitAnim, resources);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ECLAIR) {
-            activity.getParent().overridePendingTransition(enterAnimHost, exitAnimHost);
-        }
-    }
-
-    private static int getHostResId(int anim, Resources resources) {
         int animHost = anim;
         if (anim != 0) {
             String animStr = resources.getResourceEntryName(anim);
-            animHost = getHostResId(animStr);
+            animHost = getHostResId("anim", animStr);
         }
         return animHost;
     }
@@ -37,12 +24,13 @@ public class IActivityProxy {
     /**
      * 获取主工程的资源id：针对某些系统动画的情况下，需要将资源放到主工程获取
      *
+     * @param defType  资源类型
      * @param animStr  资源id字符名
      * @return
      */
-    private static int getHostResId(String animStr) {
+    public static int getHostResId(String defType, String animStr) {
         final Context hostContext = RePlugin.getHostContext();
-        int resId = hostContext.getResources().getIdentifier(animStr, "anim" , hostContext.getPackageName());
+        int resId = hostContext.getResources().getIdentifier(animStr, defType , RePlugin.getPluginContext().getPackageName());
         return resId;
     }
 }

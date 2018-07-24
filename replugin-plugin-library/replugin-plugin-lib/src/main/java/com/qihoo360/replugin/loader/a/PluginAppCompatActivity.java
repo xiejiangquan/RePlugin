@@ -22,10 +22,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-
 import com.qihoo360.replugin.RePluginInternal;
 import com.qihoo360.replugin.helper.LogRelease;
-
 import java.lang.reflect.Field;
 
 /**
@@ -159,5 +157,10 @@ public abstract class PluginAppCompatActivity extends AppCompatActivity {
     @Override
     public String getPackageCodePath() {
         return super.getPackageCodePath();
+    }
+
+    @Override
+    public void overridePendingTransition(int enterAnim, int exitAnim) {
+        super.overridePendingTransition(IActivityProxy.getHostAnimResId(enterAnim), IActivityProxy.getHostAnimResId(exitAnim));
     }
 }

@@ -20,7 +20,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
 import com.qihoo360.replugin.RePluginInternal;
 import com.qihoo360.replugin.helper.LogRelease;
 
@@ -102,5 +101,10 @@ public abstract class PluginActivity extends Activity {
 
         super.startActivityForResult(intent, requestCode);
 
+    }
+
+    @Override
+    public void overridePendingTransition(int enterAnim, int exitAnim) {
+        super.overridePendingTransition(IActivityProxy.getHostAnimResId(enterAnim), IActivityProxy.getHostAnimResId(exitAnim));
     }
 }
