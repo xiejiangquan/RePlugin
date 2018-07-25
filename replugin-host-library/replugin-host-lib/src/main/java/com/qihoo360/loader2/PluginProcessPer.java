@@ -277,6 +277,7 @@ class PluginProcessPer extends IPluginClient.Stub {
         }
 
         // 插件 manifest 中设置的 ThemeId
+        intent.setExtrasClassLoader(p.getClassLoader());//用插件的classloader解析数据
         int manifestThemeId = intent.getIntExtra(PluginCommImpl.INTENT_KEY_THEME_ID, 0);
 
         //如果用户只设置动态主题，即没有在manifest设置主题，那么加个标记，在分配坑的时候用
