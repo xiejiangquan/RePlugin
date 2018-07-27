@@ -60,6 +60,8 @@ public class PluginCommImpl {
     private static final String CONTAINER_PROVIDER_AUTHORITY_PART = ".loader.p.pr";
     static final String INTENT_KEY_THEME_ID = "__themeId";
 
+    static final String INTENT_KEY_ACTIVITY_INFO = "__activityinfo";
+
     /**
      *
      */
@@ -418,6 +420,7 @@ public class PluginCommImpl {
 
             // 存储此 Activity 在插件 Manifest 中声明主题到 Intent
             intent.putExtra(INTENT_KEY_THEME_ID, ai.theme);
+            intent.putExtra(INTENT_KEY_ACTIVITY_INFO, ai);
             if (LOG) {
                 LogDebug.d("theme", String.format("intent.putExtra(%s, %s);", ai.name, ai.theme));
             }

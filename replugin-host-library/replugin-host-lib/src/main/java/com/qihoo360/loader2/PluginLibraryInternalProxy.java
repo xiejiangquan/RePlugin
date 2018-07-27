@@ -21,6 +21,7 @@ import android.app.Service;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -448,6 +449,11 @@ public class PluginLibraryInternalProxy {
         if (intent != null) {
             intent.setExtrasClassLoader(activity.getClassLoader());
             activity.setTheme(getThemeId(activity, intent));
+            //设置setSoftInputMode，其他属性也可以设置
+            ActivityInfo activityInfo = intent.getParcelableExtra(PluginCommImpl.INTENT_KEY_ACTIVITY_INFO);
+            if (null != activityInfo) {
+                activity.getWindow().setSoftInputMode(activityInfo.softInputMode);
+            }
         }
     }
 
