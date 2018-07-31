@@ -99,7 +99,7 @@ class ComponentsGenerator {
                     "${process}":"${pluginMgrProcessName}")
 
             /* 无主题坑 NTM*/
-            config.countTranslucentStandard.times {
+            config.countNoThemeStandard.times {
                 activity(
                     "${name}": "${applicationID}.${infix}N1NRNTM${it}",
                     "${cfg}": "${cfgV}",
@@ -107,7 +107,7 @@ class ComponentsGenerator {
                     "${ori}": "${oriV}"
                 )
             }
-            config.countTranslucentSingleTop.times {
+            config.countNoThemeSingleTop.times {
                 activity(
                     "${name}": "${applicationID}.${infix}N1STPNTM${it}",
                     "${cfg}": "${cfgV}",
@@ -116,7 +116,7 @@ class ComponentsGenerator {
                     "${launchMode}": "singleTop"
                 )
             }
-            config.countTranslucentSingleTask.times {
+            config.countNoThemeSingleTask.times {
                 activity(
                     "${name}": "${applicationID}.${infix}N1STNTM${it}",
                     "${cfg}": "${cfgV}",
@@ -124,7 +124,7 @@ class ComponentsGenerator {
                     "${ori}": "${oriV}",
                     "${launchMode}": "singleTask")
             }
-            config.countTranslucentSingleInstance.times {
+            config.countNoThemeSingleInstance.times {
                 activity(
                     "${name}": "${applicationID}.${infix}N1SINTM${it}",
                     "${cfg}": "${cfgV}",
@@ -133,79 +133,79 @@ class ComponentsGenerator {
                     "${launchMode}": "singleInstance")
             }
 
-            /* 透明坑 */
-            config.countTranslucentStandard.times {
-                activity(
-                        "${name}": "${applicationID}.${infix}N1NRTS${it}",
-                        "${cfg}": "${cfgV}",
-                        "${exp}": "${expV}",
-                        "${ori}": "${oriV}",
-                        "${theme}": "${themeTS}")
-            }
-            config.countTranslucentSingleTop.times {
-                activity(
-                        "${name}": "${applicationID}.${infix}N1STPTS${it}",
-                        "${cfg}": "${cfgV}",
-                        "${exp}": "${expV}",
-                        "${ori}": "${oriV}",
-                        "${theme}": "${themeTS}",
-                        "${launchMode}": "singleTop")
-            }
-            config.countTranslucentSingleTask.times {
-                activity(
-                        "${name}": "${applicationID}.${infix}N1STTS${it}",
-                        "${cfg}": "${cfgV}",
-                        "${exp}": "${expV}",
-                        "${ori}": "${oriV}",
-                        "${theme}": "${themeTS}",
-                        "${launchMode}": "singleTask")
-            }
-            config.countTranslucentSingleInstance.times {
-                activity(
-                        "${name}": "${applicationID}.${infix}N1SITS${it}",
-                        "${cfg}": "${cfgV}",
-                        "${exp}": "${expV}",
-                        "${ori}": "${oriV}",
-                        "${theme}": "${themeTS}",
-                        "${launchMode}": "singleInstance")
-            }
-
-            /* 不透明坑 */
-            config.countNotTranslucentStandard.times {
-                activity(
-                        "${name}": "${applicationID}.${infix}N1NRNTS${it}",
-                        "${cfg}": "${cfgV}",
-                        "${exp}": "${expV}",
-                        "${ori}": "${oriV}",
-                        "${theme}": "${themeNTS}")
-            }
-            config.countNotTranslucentSingleTop.times {
-                activity(
-                        "${name}": "${applicationID}.${infix}N1STPNTS${it}",
-                        "${cfg}": "${cfgV}",
-                        "${exp}": "${expV}",
-                        "${ori}": "${oriV}",
-                        "${theme}": "${themeNTS}",
-                        "${launchMode}": "singleTop")
-            }
-            config.countNotTranslucentSingleTask.times {
-                activity(
-                        "${name}": "${applicationID}.${infix}N1STNTS${it}",
-                        "${cfg}": "${cfgV}",
-                        "${exp}": "${expV}",
-                        "${ori}": "${oriV}",
-                        "${theme}": "${themeNTS}",
-                        "${launchMode}": "singleTask",)
-            }
-            config.countNotTranslucentSingleInstance.times {
-                activity(
-                        "${name}": "${applicationID}.${infix}N1SINTS${it}",
-                        "${cfg}": "${cfgV}",
-                        "${exp}": "${expV}",
-                        "${ori}": "${oriV}",
-                        "${theme}": "${themeNTS}",
-                        "${launchMode}": "singleInstance")
-            }
+//            /* 透明坑 */
+//            config.countTranslucentStandard.times {
+//                activity(
+//                        "${name}": "${applicationID}.${infix}N1NRTS${it}",
+//                        "${cfg}": "${cfgV}",
+//                        "${exp}": "${expV}",
+//                        "${ori}": "${oriV}",
+//                        "${theme}": "${themeTS}")
+//            }
+//            config.countTranslucentSingleTop.times {
+//                activity(
+//                        "${name}": "${applicationID}.${infix}N1STPTS${it}",
+//                        "${cfg}": "${cfgV}",
+//                        "${exp}": "${expV}",
+//                        "${ori}": "${oriV}",
+//                        "${theme}": "${themeTS}",
+//                        "${launchMode}": "singleTop")
+//            }
+//            config.countTranslucentSingleTask.times {
+//                activity(
+//                        "${name}": "${applicationID}.${infix}N1STTS${it}",
+//                        "${cfg}": "${cfgV}",
+//                        "${exp}": "${expV}",
+//                        "${ori}": "${oriV}",
+//                        "${theme}": "${themeTS}",
+//                        "${launchMode}": "singleTask")
+//            }
+//            config.countTranslucentSingleInstance.times {
+//                activity(
+//                        "${name}": "${applicationID}.${infix}N1SITS${it}",
+//                        "${cfg}": "${cfgV}",
+//                        "${exp}": "${expV}",
+//                        "${ori}": "${oriV}",
+//                        "${theme}": "${themeTS}",
+//                        "${launchMode}": "singleInstance")
+//            }
+//
+//            /* 不透明坑 */
+//            config.countNotTranslucentStandard.times {
+//                activity(
+//                        "${name}": "${applicationID}.${infix}N1NRNTS${it}",
+//                        "${cfg}": "${cfgV}",
+//                        "${exp}": "${expV}",
+//                        "${ori}": "${oriV}",
+//                        "${theme}": "${themeNTS}")
+//            }
+//            config.countNotTranslucentSingleTop.times {
+//                activity(
+//                        "${name}": "${applicationID}.${infix}N1STPNTS${it}",
+//                        "${cfg}": "${cfgV}",
+//                        "${exp}": "${expV}",
+//                        "${ori}": "${oriV}",
+//                        "${theme}": "${themeNTS}",
+//                        "${launchMode}": "singleTop")
+//            }
+//            config.countNotTranslucentSingleTask.times {
+//                activity(
+//                        "${name}": "${applicationID}.${infix}N1STNTS${it}",
+//                        "${cfg}": "${cfgV}",
+//                        "${exp}": "${expV}",
+//                        "${ori}": "${oriV}",
+//                        "${theme}": "${themeNTS}",
+//                        "${launchMode}": "singleTask",)
+//            }
+//            config.countNotTranslucentSingleInstance.times {
+//                activity(
+//                        "${name}": "${applicationID}.${infix}N1SINTS${it}",
+//                        "${cfg}": "${cfgV}",
+//                        "${exp}": "${expV}",
+//                        "${ori}": "${oriV}",
+//                        "${theme}": "${themeNTS}",
+//                        "${launchMode}": "singleInstance")
+//            }
 
 
 
@@ -214,97 +214,94 @@ class ComponentsGenerator {
             config.countTask.times { i ->
 
                 /* 无主题坑 NTM*/
-                config.countTranslucentStandard.times { j ->
+                config.countNoThemeStandard.times { j ->
                     activity(
                         "${name}": "${applicationID}.${infix}N1TA${i}NRNTM${j}",
                         "${cfg}": "${cfgV}",
                         "${exp}": "${expV}",
                         "${ori}": "${oriV}",
-                        "${theme}": "${themeTS}",
                         "${task}": ":t${i}")
                 }
-                config.countTranslucentSingleTop.times { j ->
+                config.countNoThemeSingleTop.times { j ->
                     activity(
                         "${name}": "${applicationID}.${infix}N1TA${i}STPNTM${j}",
                         "${cfg}": "${cfgV}",
                         "${exp}": "${expV}",
                         "${ori}": "${oriV}",
-                        "${theme}": "${themeTS}",
                         "${task}": ":t${i}",
                         "${launchMode}": "singleTop")
                 }
-                config.countTranslucentSingleTask.times { j ->
+                config.countNoThemeSingleTask.times { j ->
                     activity(
                         "${name}": "${applicationID}.${infix}N1TA${i}STNTM${j}",
                         "${cfg}": "${cfgV}",
                         "${exp}": "${expV}",
                         "${ori}": "${oriV}",
-                        "${theme}": "${themeTS}",
                         "${task}": ":t${i}",
                         "${launchMode}": "singleTask")
                 }
 
-                //透明坑
-                config.countTranslucentStandard.times { j ->
-                    activity(
-                            "${name}": "${applicationID}.${infix}N1TA${i}NRTS${j}",
-                            "${cfg}": "${cfgV}",
-                            "${exp}": "${expV}",
-                            "${ori}": "${oriV}",
-                            "${theme}": "${themeTS}",
-                            "${task}": ":t${i}")
-                }
-                config.countTranslucentSingleTop.times { j ->
-                    activity(
-                            "${name}": "${applicationID}.${infix}N1TA${i}STPTS${j}",
-                            "${cfg}": "${cfgV}",
-                            "${exp}": "${expV}",
-                            "${ori}": "${oriV}",
-                            "${theme}": "${themeTS}",
-                            "${task}": ":t${i}",
-                            "${launchMode}": "singleTop")
-                }
-                config.countTranslucentSingleTask.times { j ->
-                    activity(
-                            "${name}": "${applicationID}.${infix}N1TA${i}STTS${j}",
-                            "${cfg}": "${cfgV}",
-                            "${exp}": "${expV}",
-                            "${ori}": "${oriV}",
-                            "${theme}": "${themeTS}",
-                            "${task}": ":t${i}",
-                            "${launchMode}": "singleTask")
-                }
-
-                //非透明坑
-                config.countNotTranslucentStandard.times { j ->
-                    activity(
-                            "${name}": "${applicationID}.${infix}N1TA${i}NRNTS${j}",
-                            "${cfg}": "${cfgV}",
-                            "${exp}": "${expV}",
-                            "${ori}": "${oriV}",
-                            "${theme}": "${themeNTS}",
-                            "${task}": ":t${i}")
-                }
-                config.countNotTranslucentSingleTop.times { j ->
-                    activity(
-                            "${name}": "${applicationID}.${infix}N1TA${i}STPNTS${j}",
-                            "${cfg}": "${cfgV}",
-                            "${exp}": "${expV}",
-                            "${ori}": "${oriV}",
-                            "${theme}": "${themeNTS}",
-                            "${task}": ":t${i}",
-                            "${launchMode}": "singleTop")
-                }
-                config.countNotTranslucentSingleTask.times { j ->
-                    activity(
-                            "${name}": "${applicationID}.${infix}N1TA${i}STNTS${j}",
-                            "${cfg}": "${cfgV}",
-                            "${exp}": "${expV}",
-                            "${ori}": "${oriV}",
-                            "${theme}": "${themeNTS}",
-                            "${task}": ":t${i}",
-                            "${launchMode}": "singleTask")
-                }
+//                //透明坑
+//                config.countTranslucentStandard.times { j ->
+//                    activity(
+//                            "${name}": "${applicationID}.${infix}N1TA${i}NRTS${j}",
+//                            "${cfg}": "${cfgV}",
+//                            "${exp}": "${expV}",
+//                            "${ori}": "${oriV}",
+//                            "${theme}": "${themeTS}",
+//                            "${task}": ":t${i}")
+//                }
+//                config.countTranslucentSingleTop.times { j ->
+//                    activity(
+//                            "${name}": "${applicationID}.${infix}N1TA${i}STPTS${j}",
+//                            "${cfg}": "${cfgV}",
+//                            "${exp}": "${expV}",
+//                            "${ori}": "${oriV}",
+//                            "${theme}": "${themeTS}",
+//                            "${task}": ":t${i}",
+//                            "${launchMode}": "singleTop")
+//                }
+//                config.countTranslucentSingleTask.times { j ->
+//                    activity(
+//                            "${name}": "${applicationID}.${infix}N1TA${i}STTS${j}",
+//                            "${cfg}": "${cfgV}",
+//                            "${exp}": "${expV}",
+//                            "${ori}": "${oriV}",
+//                            "${theme}": "${themeTS}",
+//                            "${task}": ":t${i}",
+//                            "${launchMode}": "singleTask")
+//                }
+//
+//                //非透明坑
+//                config.countNotTranslucentStandard.times { j ->
+//                    activity(
+//                            "${name}": "${applicationID}.${infix}N1TA${i}NRNTS${j}",
+//                            "${cfg}": "${cfgV}",
+//                            "${exp}": "${expV}",
+//                            "${ori}": "${oriV}",
+//                            "${theme}": "${themeNTS}",
+//                            "${task}": ":t${i}")
+//                }
+//                config.countNotTranslucentSingleTop.times { j ->
+//                    activity(
+//                            "${name}": "${applicationID}.${infix}N1TA${i}STPNTS${j}",
+//                            "${cfg}": "${cfgV}",
+//                            "${exp}": "${expV}",
+//                            "${ori}": "${oriV}",
+//                            "${theme}": "${themeNTS}",
+//                            "${task}": ":t${i}",
+//                            "${launchMode}": "singleTop")
+//                }
+//                config.countNotTranslucentSingleTask.times { j ->
+//                    activity(
+//                            "${name}": "${applicationID}.${infix}N1TA${i}STNTS${j}",
+//                            "${cfg}": "${cfgV}",
+//                            "${exp}": "${expV}",
+//                            "${ori}": "${oriV}",
+//                            "${theme}": "${themeNTS}",
+//                            "${task}": ":t${i}",
+//                            "${launchMode}": "singleTask")
+//                }
             }
         }
         // 删除 application 标签
@@ -337,7 +334,7 @@ class ComponentsGenerator {
 
 
                 /* 无主题坑 NTM*/
-                config.countTranslucentStandard.times {
+                config.countNoThemeStandard.times {
                     activity(
                         "${name}": "${applicationID}.${infix}P${p}NRNTM${it}",
                         "${cfg}": "${cfgV}",
@@ -345,7 +342,7 @@ class ComponentsGenerator {
                         "${ori}": "${oriV}",
                         "${process}": ":p${p}")
                 }
-                config.countTranslucentSingleTop.times {
+                config.countNoThemeSingleTop.times {
                     activity(
                         "${name}": "${applicationID}.${infix}P${p}STPNTM${it}",
                         "${cfg}": "${cfgV}",
@@ -354,7 +351,7 @@ class ComponentsGenerator {
                         "${process}": ":p${p}",
                         "${launchMode}": "singleTop")
                 }
-                config.countTranslucentSingleTask.times {
+                config.countNoThemeSingleTask.times {
                     activity(
                         "${name}": "${applicationID}.${infix}P${p}STNTM${it}",
                         "${cfg}": "${cfgV}",
@@ -363,7 +360,7 @@ class ComponentsGenerator {
                         "${process}": ":p${p}",
                         "${launchMode}": "singleTask")
                 }
-                config.countTranslucentSingleInstance.times {
+                config.countNoThemeSingleInstance.times {
                     activity(
                         "${name}": "${applicationID}.${infix}P${p}SINTM${it}",
                         "${cfg}": "${cfgV}",
@@ -373,93 +370,93 @@ class ComponentsGenerator {
                         "${launchMode}": "singleInstance")
                 }
 
-                //透明坑
-                config.countTranslucentStandard.times {
-                    activity(
-                            "${name}": "${applicationID}.${infix}P${p}NRTS${it}",
-                            "${cfg}": "${cfgV}",
-                            "${exp}": "${expV}",
-                            "${ori}": "${oriV}",
-                            "${theme}": "${themeTS}",
-                            "${process}": ":p${p}")
-                }
-                config.countTranslucentSingleTop.times {
-                    activity(
-                            "${name}": "${applicationID}.${infix}P${p}STPTS${it}",
-                            "${cfg}": "${cfgV}",
-                            "${exp}": "${expV}",
-                            "${ori}": "${oriV}",
-                            "${theme}": "${themeTS}",
-                            "${process}": ":p${p}",
-                            "${launchMode}": "singleTop")
-                }
-                config.countTranslucentSingleTask.times {
-                    activity(
-                            "${name}": "${applicationID}.${infix}P${p}STTS${it}",
-                            "${cfg}": "${cfgV}",
-                            "${exp}": "${expV}",
-                            "${ori}": "${oriV}",
-                            "${theme}": "${themeTS}",
-                            "${process}": ":p${p}",
-                            "${launchMode}": "singleTask")
-                }
-                config.countTranslucentSingleInstance.times {
-                    activity(
-                            "${name}": "${applicationID}.${infix}P${p}SITS${it}",
-                            "${cfg}": "${cfgV}",
-                            "${exp}": "${expV}",
-                            "${ori}": "${oriV}",
-                            "${theme}": "${themeTS}",
-                            "${process}": ":p${p}",
-                            "${launchMode}": "singleInstance")
-                }
-
-                //非透明坑
-                config.countNotTranslucentStandard.times {
-                    activity(
-                            "${name}": "${applicationID}.${infix}P${p}NRNTS${it}",
-                            "${cfg}": "${cfgV}",
-                            "${exp}": "${expV}",
-                            "${ori}": "${oriV}",
-                            "${theme}": "${themeNTS}",
-                            "${process}": ":p${p}")
-                }
-                config.countNotTranslucentSingleTop.times {
-                    activity(
-                            "${name}": "${applicationID}.${infix}P${p}STPNTS${it}",
-                            "${cfg}": "${cfgV}",
-                            "${exp}": "${expV}",
-                            "${ori}": "${oriV}",
-                            "${theme}": "${themeNTS}",
-                            "${process}": ":p${p}",
-                            "${launchMode}": "singleTop")
-                }
-                config.countNotTranslucentSingleTask.times {
-                    activity(
-                            "${name}": "${applicationID}.${infix}P${p}STNTS${it}",
-                            "${cfg}": "${cfgV}",
-                            "${exp}": "${expV}",
-                            "${ori}": "${oriV}",
-                            "${theme}": "${themeNTS}",
-                            "${process}": ":p${p}",
-                            "${launchMode}": "singleTask")
-                }
-                config.countNotTranslucentSingleInstance.times {
-                    activity(
-                            "${name}": "${applicationID}.${infix}P${p}SINTS${it}",
-                            "${cfg}": "${cfgV}",
-                            "${exp}": "${expV}",
-                            "${ori}": "${oriV}",
-                            "${theme}": "${themeNTS}",
-                            "${process}": ":p${p}",
-                            "${launchMode}": "singleInstance")
-                }
+//                //透明坑
+//                config.countTranslucentStandard.times {
+//                    activity(
+//                            "${name}": "${applicationID}.${infix}P${p}NRTS${it}",
+//                            "${cfg}": "${cfgV}",
+//                            "${exp}": "${expV}",
+//                            "${ori}": "${oriV}",
+//                            "${theme}": "${themeTS}",
+//                            "${process}": ":p${p}")
+//                }
+//                config.countTranslucentSingleTop.times {
+//                    activity(
+//                            "${name}": "${applicationID}.${infix}P${p}STPTS${it}",
+//                            "${cfg}": "${cfgV}",
+//                            "${exp}": "${expV}",
+//                            "${ori}": "${oriV}",
+//                            "${theme}": "${themeTS}",
+//                            "${process}": ":p${p}",
+//                            "${launchMode}": "singleTop")
+//                }
+//                config.countTranslucentSingleTask.times {
+//                    activity(
+//                            "${name}": "${applicationID}.${infix}P${p}STTS${it}",
+//                            "${cfg}": "${cfgV}",
+//                            "${exp}": "${expV}",
+//                            "${ori}": "${oriV}",
+//                            "${theme}": "${themeTS}",
+//                            "${process}": ":p${p}",
+//                            "${launchMode}": "singleTask")
+//                }
+//                config.countTranslucentSingleInstance.times {
+//                    activity(
+//                            "${name}": "${applicationID}.${infix}P${p}SITS${it}",
+//                            "${cfg}": "${cfgV}",
+//                            "${exp}": "${expV}",
+//                            "${ori}": "${oriV}",
+//                            "${theme}": "${themeTS}",
+//                            "${process}": ":p${p}",
+//                            "${launchMode}": "singleInstance")
+//                }
+//
+//                //非透明坑
+//                config.countNotTranslucentStandard.times {
+//                    activity(
+//                            "${name}": "${applicationID}.${infix}P${p}NRNTS${it}",
+//                            "${cfg}": "${cfgV}",
+//                            "${exp}": "${expV}",
+//                            "${ori}": "${oriV}",
+//                            "${theme}": "${themeNTS}",
+//                            "${process}": ":p${p}")
+//                }
+//                config.countNotTranslucentSingleTop.times {
+//                    activity(
+//                            "${name}": "${applicationID}.${infix}P${p}STPNTS${it}",
+//                            "${cfg}": "${cfgV}",
+//                            "${exp}": "${expV}",
+//                            "${ori}": "${oriV}",
+//                            "${theme}": "${themeNTS}",
+//                            "${process}": ":p${p}",
+//                            "${launchMode}": "singleTop")
+//                }
+//                config.countNotTranslucentSingleTask.times {
+//                    activity(
+//                            "${name}": "${applicationID}.${infix}P${p}STNTS${it}",
+//                            "${cfg}": "${cfgV}",
+//                            "${exp}": "${expV}",
+//                            "${ori}": "${oriV}",
+//                            "${theme}": "${themeNTS}",
+//                            "${process}": ":p${p}",
+//                            "${launchMode}": "singleTask")
+//                }
+//                config.countNotTranslucentSingleInstance.times {
+//                    activity(
+//                            "${name}": "${applicationID}.${infix}P${p}SINTS${it}",
+//                            "${cfg}": "${cfgV}",
+//                            "${exp}": "${expV}",
+//                            "${ori}": "${oriV}",
+//                            "${theme}": "${themeNTS}",
+//                            "${process}": ":p${p}",
+//                            "${launchMode}": "singleInstance")
+//                }
 
                 /* TaskAffinity */
                 config.countTask.times { i ->
 
                     /* 无主题坑 NTM*/
-                    config.countTranslucentStandard.times { j ->
+                    config.countNoThemeStandard.times { j ->
                         activity(
                             "${name}": "${applicationID}.${infix}P${p}TA${i}NRNTM${j}",
                             "${cfg}": "${cfgV}",
@@ -468,7 +465,7 @@ class ComponentsGenerator {
                             "${process}": ":p${p}",
                             "${task}": ":t${i}")
                     }
-                    config.countTranslucentSingleTop.times { j ->
+                    config.countNoThemeSingleTop.times { j ->
                         activity(
                             "${name}": "${applicationID}.${infix}P${p}TA${i}STPNTM${j}",
                             "${cfg}": "${cfgV}",
@@ -478,7 +475,7 @@ class ComponentsGenerator {
                             "${process}": ":p${p}",
                             "${task}": ":t${i}")
                     }
-                    config.countTranslucentSingleTask.times { j ->
+                    config.countNoThemeSingleTask.times { j ->
                         activity(
                             "${name}": "${applicationID}.${infix}P${p}TA${i}STNTM${j}",
                             "${cfg}": "${cfgV}",
@@ -489,73 +486,73 @@ class ComponentsGenerator {
                             "${task}": ":t${i}")
                     }
 
-                    //透明坑
-                    config.countTranslucentStandard.times { j ->
-                        activity(
-                                "${name}": "${applicationID}.${infix}P${p}TA${i}NRTS${j}",
-                                "${cfg}": "${cfgV}",
-                                "${exp}": "${expV}",
-                                "${ori}": "${oriV}",
-                                "${theme}": "${themeTS}",
-                                "${process}": ":p${p}",
-                                "${task}": ":t${i}")
-                    }
-                    config.countTranslucentSingleTop.times { j ->
-                        activity(
-                                "${name}": "${applicationID}.${infix}P${p}TA${i}STPTS${j}",
-                                "${cfg}": "${cfgV}",
-                                "${exp}": "${expV}",
-                                "${ori}": "${oriV}",
-                                "${theme}": "${themeTS}",
-                                "${launchMode}": "singleTop",
-                                "${process}": ":p${p}",
-                                "${task}": ":t${i}")
-                    }
-                    config.countTranslucentSingleTask.times { j ->
-                        activity(
-                                "${name}": "${applicationID}.${infix}P${p}TA${i}STTS${j}",
-                                "${cfg}": "${cfgV}",
-                                "${exp}": "${expV}",
-                                "${ori}": "${oriV}",
-                                "${theme}": "${themeTS}",
-                                "${launchMode}": "singleTask",
-                                "${process}": ":p${p}",
-                                "${task}": ":t${i}")
-                    }
-
-                    //非透明坑
-                    config.countNotTranslucentStandard.times { j ->
-                        activity(
-                                "${name}": "${applicationID}.${infix}P${p}TA${i}NRNTS${j}",
-                                "${cfg}": "${cfgV}",
-                                "${exp}": "${expV}",
-                                "${ori}": "${oriV}",
-                                "${theme}": "${themeNTS}",
-                                "${process}": ":p${p}",
-                                "${task}": ":t${i}")
-                    }
-                    config.countNotTranslucentSingleTop.times { j ->
-                        activity(
-                                "${name}": "${applicationID}.${infix}P${p}TA${i}STPNTS${j}",
-                                "${cfg}": "${cfgV}",
-                                "${exp}": "${expV}",
-                                "${ori}": "${oriV}",
-                                "${theme}": "${themeNTS}",
-                                "${launchMode}": "singleTop",
-                                "${process}": ":p${p}",
-                                "${task}": ":t${i}")
-                    }
-                    config.countNotTranslucentSingleTask.times { j ->
-                        activity(
-                                "${name}": "${applicationID}.${infix}P${p}TA${i}STNTS${j}",
-                                "${cfg}": "${cfgV}",
-                                "${exp}": "${expV}",
-                                "${ori}": "${oriV}",
-                                "${theme}": "${themeNTS}",
-                                "${launchMode}": "singleTask",
-                                "${process}": ":p${p}",
-                                "${task}": ":t${i}")
-                    }
+//                    //透明坑
+//                    config.countTranslucentStandard.times { j ->
+//                        activity(
+//                                "${name}": "${applicationID}.${infix}P${p}TA${i}NRTS${j}",
+//                                "${cfg}": "${cfgV}",
+//                                "${exp}": "${expV}",
+//                                "${ori}": "${oriV}",
+//                                "${theme}": "${themeTS}",
+//                                "${process}": ":p${p}",
+//                                "${task}": ":t${i}")
+//                    }
+//                    config.countTranslucentSingleTop.times { j ->
+//                        activity(
+//                                "${name}": "${applicationID}.${infix}P${p}TA${i}STPTS${j}",
+//                                "${cfg}": "${cfgV}",
+//                                "${exp}": "${expV}",
+//                                "${ori}": "${oriV}",
+//                                "${theme}": "${themeTS}",
+//                                "${launchMode}": "singleTop",
+//                                "${process}": ":p${p}",
+//                                "${task}": ":t${i}")
+//                    }
+//                    config.countTranslucentSingleTask.times { j ->
+//                        activity(
+//                                "${name}": "${applicationID}.${infix}P${p}TA${i}STTS${j}",
+//                                "${cfg}": "${cfgV}",
+//                                "${exp}": "${expV}",
+//                                "${ori}": "${oriV}",
+//                                "${theme}": "${themeTS}",
+//                                "${launchMode}": "singleTask",
+//                                "${process}": ":p${p}",
+//                                "${task}": ":t${i}")
+//                    }
+//
+//                    //非透明坑
+//                    config.countNotTranslucentStandard.times { j ->
+//                        activity(
+//                                "${name}": "${applicationID}.${infix}P${p}TA${i}NRNTS${j}",
+//                                "${cfg}": "${cfgV}",
+//                                "${exp}": "${expV}",
+//                                "${ori}": "${oriV}",
+//                                "${theme}": "${themeNTS}",
+//                                "${process}": ":p${p}",
+//                                "${task}": ":t${i}")
+//                    }
+//                    config.countNotTranslucentSingleTop.times { j ->
+//                        activity(
+//                                "${name}": "${applicationID}.${infix}P${p}TA${i}STPNTS${j}",
+//                                "${cfg}": "${cfgV}",
+//                                "${exp}": "${expV}",
+//                                "${ori}": "${oriV}",
+//                                "${theme}": "${themeNTS}",
+//                                "${launchMode}": "singleTop",
+//                                "${process}": ":p${p}",
+//                                "${task}": ":t${i}")
+//                    }
+//                    config.countNotTranslucentSingleTask.times { j ->
+//                        activity(
+//                                "${name}": "${applicationID}.${infix}P${p}TA${i}STNTS${j}",
+//                                "${cfg}": "${cfgV}",
+//                                "${exp}": "${expV}",
+//                                "${ori}": "${oriV}",
+//                                "${theme}": "${themeNTS}",
+//                                "${launchMode}": "singleTask",
+//                                "${process}": ":p${p}",
+//                                "${task}": ":t${i}")
+//                    }
                 }
 
                 /* Provider */
