@@ -179,10 +179,17 @@ public class Replugin implements Plugin<Project> {
         }
 */
         doCheckConfig("countProcess", config.countProcess)
+
+        doCheckConfig("countNoThemeStandard", config.countNoThemeStandard)
+        doCheckConfig("countNoThemeSingleTop", config.countNoThemeSingleTop)
+        doCheckConfig("countNoThemeSingleTask", config.countNoThemeSingleTask)
+        doCheckConfig("countNoThemeSingleInstance", config.countNoThemeSingleInstance)
+
         doCheckConfig("countTranslucentStandard", config.countTranslucentStandard)
         doCheckConfig("countTranslucentSingleTop", config.countTranslucentSingleTop)
         doCheckConfig("countTranslucentSingleTask", config.countTranslucentSingleTask)
         doCheckConfig("countTranslucentSingleInstance", config.countTranslucentSingleInstance)
+
         doCheckConfig("countNotTranslucentStandard", config.countNotTranslucentStandard)
         doCheckConfig("countNotTranslucentSingleTop", config.countNotTranslucentSingleTop)
         doCheckConfig("countNotTranslucentSingleTask", config.countNotTranslucentSingleTask)
@@ -195,10 +202,17 @@ public class Replugin implements Plugin<Project> {
         // println "${TAG} persistentName=${config.persistentName}"
         println "${TAG} countProcess=${config.countProcess}"
 
+
+        println "${TAG} countNoThemeStandard=${config.countNoThemeStandard}"
+        println "${TAG} countNoThemeSingleTop=${config.countNoThemeSingleTop}"
+        println "${TAG} countNoThemeSingleTask=${config.countNoThemeSingleTask}"
+        println "${TAG} countNoThemeSingleInstance=${config.countNoThemeSingleInstance}"
+
         println "${TAG} countTranslucentStandard=${config.countTranslucentStandard}"
         println "${TAG} countTranslucentSingleTop=${config.countTranslucentSingleTop}"
         println "${TAG} countTranslucentSingleTask=${config.countTranslucentSingleTask}"
         println "${TAG} countTranslucentSingleInstance=${config.countTranslucentSingleInstance}"
+
         println "${TAG} countNotTranslucentStandard=${config.countNotTranslucentStandard}"
         println "${TAG} countNotTranslucentSingleTop=${config.countNotTranslucentSingleTop}"
         println "${TAG} countNotTranslucentSingleTask=${config.countNotTranslucentSingleTask}"
@@ -233,6 +247,12 @@ class RepluginConfig {
 
     /** 常驻进程名称（也就是上面说的 Persistent 进程，开发者可自定义）*/
     def persistentName = ':GuardService'
+
+    /** 无主题的坑的数量 */
+    def countNoThemeStandard = 6
+    def countNoThemeSingleTop = 6
+    def countNoThemeSingleTask = 6
+    def countNoThemeSingleInstance = 6
 
     /** 背景不透明的坑的数量 */
     def countNotTranslucentStandard = 6
