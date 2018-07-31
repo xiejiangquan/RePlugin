@@ -66,23 +66,23 @@ class TaskAffinityStates {
             LaunchModeStates states = mLaunchModeStates[i];
             /* Standard */
             states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_MULTIPLE, LaunchModeStates.ThemeType.noTheme, HostConfigHelper.ACTIVITY_PIT_COUNT_NTM_STANDARD);
-            states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_MULTIPLE, LaunchModeStates.ThemeType.translucent, HostConfigHelper.ACTIVITY_PIT_COUNT_TS_STANDARD);
-            states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_MULTIPLE, LaunchModeStates.ThemeType.notTranslucent, HostConfigHelper.ACTIVITY_PIT_COUNT_NTS_STANDARD);
+            //states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_MULTIPLE, LaunchModeStates.ThemeType.translucent, HostConfigHelper.ACTIVITY_PIT_COUNT_TS_STANDARD);
+            //states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_MULTIPLE, LaunchModeStates.ThemeType.notTranslucent, HostConfigHelper.ACTIVITY_PIT_COUNT_NTS_STANDARD);
 
             /* SingleTop */
             states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_SINGLE_TOP, LaunchModeStates.ThemeType.noTheme, HostConfigHelper.ACTIVITY_PIT_COUNT_NTM_SINGLE_TOP);
-            states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_SINGLE_TOP, LaunchModeStates.ThemeType.translucent, HostConfigHelper.ACTIVITY_PIT_COUNT_TS_SINGLE_TOP);
-            states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_SINGLE_TOP, LaunchModeStates.ThemeType.notTranslucent, HostConfigHelper.ACTIVITY_PIT_COUNT_NTS_SINGLE_TOP);
+            //states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_SINGLE_TOP, LaunchModeStates.ThemeType.translucent, HostConfigHelper.ACTIVITY_PIT_COUNT_TS_SINGLE_TOP);
+            //states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_SINGLE_TOP, LaunchModeStates.ThemeType.notTranslucent, HostConfigHelper.ACTIVITY_PIT_COUNT_NTS_SINGLE_TOP);
 
             /* SingleTask */
             states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_SINGLE_TASK, LaunchModeStates.ThemeType.noTheme, HostConfigHelper.ACTIVITY_PIT_COUNT_NTM_SINGLE_TASK);
-            states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_SINGLE_TASK, LaunchModeStates.ThemeType.translucent, HostConfigHelper.ACTIVITY_PIT_COUNT_TS_SINGLE_TASK);
-            states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_SINGLE_TASK, LaunchModeStates.ThemeType.notTranslucent, HostConfigHelper.ACTIVITY_PIT_COUNT_NTS_SINGLE_TASK);
+            //states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_SINGLE_TASK, LaunchModeStates.ThemeType.translucent, HostConfigHelper.ACTIVITY_PIT_COUNT_TS_SINGLE_TASK);
+            //states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_SINGLE_TASK, LaunchModeStates.ThemeType.notTranslucent, HostConfigHelper.ACTIVITY_PIT_COUNT_NTS_SINGLE_TASK);
 
             /* SingleInstance */
             states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_SINGLE_INSTANCE, LaunchModeStates.ThemeType.noTheme, HostConfigHelper.ACTIVITY_PIT_COUNT_NTM_SINGLE_INSTANCE);
-            states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_SINGLE_INSTANCE, LaunchModeStates.ThemeType.translucent, HostConfigHelper.ACTIVITY_PIT_COUNT_TS_SINGLE_INSTANCE);
-            states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_SINGLE_INSTANCE, LaunchModeStates.ThemeType.notTranslucent, HostConfigHelper.ACTIVITY_PIT_COUNT_NTS_SINGLE_INSTANCE);
+            //states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_SINGLE_INSTANCE, LaunchModeStates.ThemeType.translucent, HostConfigHelper.ACTIVITY_PIT_COUNT_TS_SINGLE_INSTANCE);
+            //states.addStates(allStates, containers, prefix + suffix + "TA" + i, LAUNCH_SINGLE_INSTANCE, LaunchModeStates.ThemeType.notTranslucent, HostConfigHelper.ACTIVITY_PIT_COUNT_NTS_SINGLE_INSTANCE);
         }
     }
 

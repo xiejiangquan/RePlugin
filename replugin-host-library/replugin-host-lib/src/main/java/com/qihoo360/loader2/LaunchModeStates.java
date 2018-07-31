@@ -119,10 +119,11 @@ class LaunchModeStates {
      */
     private static String getInfix(int launchMode, boolean translucent, boolean noThemeAlloc) {
         String launchModeInfix = getLaunchModeInfix(launchMode);
-        if (noThemeAlloc) {
-            return launchModeInfix + "NTM";
-        }
-        return translucent ? launchModeInfix + "TS" : launchModeInfix + "NTS";
+        //if (noThemeAlloc) {
+        //    return launchModeInfix + "NTM";
+        //}
+        //return translucent ? launchModeInfix + "TS" : launchModeInfix + "NTS";
+        return launchModeInfix + "NTM";
     }
 
 

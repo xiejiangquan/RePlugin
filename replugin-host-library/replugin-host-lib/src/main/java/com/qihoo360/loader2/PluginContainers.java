@@ -357,23 +357,23 @@ a 流程完成
 
             // Standard
             mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_MULTIPLE, LaunchModeStates.ThemeType.noTheme, HostConfigHelper.ACTIVITY_PIT_COUNT_NTM_STANDARD);
-            mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_MULTIPLE, LaunchModeStates.ThemeType.translucent, HostConfigHelper.ACTIVITY_PIT_COUNT_TS_STANDARD);
-            mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_MULTIPLE, LaunchModeStates.ThemeType.notTranslucent, HostConfigHelper.ACTIVITY_PIT_COUNT_NTS_STANDARD);
+            //mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_MULTIPLE, LaunchModeStates.ThemeType.translucent, HostConfigHelper.ACTIVITY_PIT_COUNT_TS_STANDARD);
+            //mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_MULTIPLE, LaunchModeStates.ThemeType.notTranslucent, HostConfigHelper.ACTIVITY_PIT_COUNT_NTS_STANDARD);
 
             // SingleTop
             mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_SINGLE_TOP, LaunchModeStates.ThemeType.noTheme, HostConfigHelper.ACTIVITY_PIT_COUNT_NTM_SINGLE_TOP);
-            mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_SINGLE_TOP, LaunchModeStates.ThemeType.translucent, HostConfigHelper.ACTIVITY_PIT_COUNT_TS_SINGLE_TOP);
-            mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_SINGLE_TOP, LaunchModeStates.ThemeType.notTranslucent, HostConfigHelper.ACTIVITY_PIT_COUNT_NTS_SINGLE_TOP);
+            //mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_SINGLE_TOP, LaunchModeStates.ThemeType.translucent, HostConfigHelper.ACTIVITY_PIT_COUNT_TS_SINGLE_TOP);
+            //mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_SINGLE_TOP, LaunchModeStates.ThemeType.notTranslucent, HostConfigHelper.ACTIVITY_PIT_COUNT_NTS_SINGLE_TOP);
 
             // SingleTask
             mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_SINGLE_TASK, LaunchModeStates.ThemeType.noTheme, HostConfigHelper.ACTIVITY_PIT_COUNT_NTM_SINGLE_TASK);
-            mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_SINGLE_TASK, LaunchModeStates.ThemeType.translucent, HostConfigHelper.ACTIVITY_PIT_COUNT_TS_SINGLE_TASK);
-            mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_SINGLE_TASK, LaunchModeStates.ThemeType.notTranslucent, HostConfigHelper.ACTIVITY_PIT_COUNT_NTS_SINGLE_TASK);
+            //mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_SINGLE_TASK, LaunchModeStates.ThemeType.translucent, HostConfigHelper.ACTIVITY_PIT_COUNT_TS_SINGLE_TASK);
+            //mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_SINGLE_TASK, LaunchModeStates.ThemeType.notTranslucent, HostConfigHelper.ACTIVITY_PIT_COUNT_NTS_SINGLE_TASK);
 
             // SingleInstance
             mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_SINGLE_INSTANCE, LaunchModeStates.ThemeType.noTheme, HostConfigHelper.ACTIVITY_PIT_COUNT_NTM_SINGLE_INSTANCE);
-            mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_SINGLE_INSTANCE, LaunchModeStates.ThemeType.translucent, HostConfigHelper.ACTIVITY_PIT_COUNT_TS_SINGLE_INSTANCE);
-            mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_SINGLE_INSTANCE, LaunchModeStates.ThemeType.notTranslucent, HostConfigHelper.ACTIVITY_PIT_COUNT_NTS_SINGLE_INSTANCE);
+            //mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_SINGLE_INSTANCE, LaunchModeStates.ThemeType.translucent, HostConfigHelper.ACTIVITY_PIT_COUNT_TS_SINGLE_INSTANCE);
+            //mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_SINGLE_INSTANCE, LaunchModeStates.ThemeType.notTranslucent, HostConfigHelper.ACTIVITY_PIT_COUNT_NTS_SINGLE_INSTANCE);
 
             // taskAffinity
             mTaskAffinityStates.init(prefix, suffix, mStates, containers);
@@ -406,23 +406,23 @@ a 流程完成
 
         // Standard
         states.mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_MULTIPLE, LaunchModeStates.ThemeType.noTheme, HostConfigHelper.ACTIVITY_PIT_COUNT_NTM_STANDARD);
-        states.mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_MULTIPLE, LaunchModeStates.ThemeType.translucent, HostConfigHelper.ACTIVITY_PIT_COUNT_TS_STANDARD);
-        states.mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_MULTIPLE, LaunchModeStates.ThemeType.notTranslucent, HostConfigHelper.ACTIVITY_PIT_COUNT_NTS_STANDARD);
+        //states.mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_MULTIPLE, LaunchModeStates.ThemeType.translucent, HostConfigHelper.ACTIVITY_PIT_COUNT_TS_STANDARD);
+        //states.mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_MULTIPLE, LaunchModeStates.ThemeType.notTranslucent, HostConfigHelper.ACTIVITY_PIT_COUNT_NTS_STANDARD);
 
         // SingleTop
         states.mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_SINGLE_TOP, LaunchModeStates.ThemeType.noTheme, HostConfigHelper.ACTIVITY_PIT_COUNT_NTM_SINGLE_TOP);
-        states.mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_SINGLE_TOP, LaunchModeStates.ThemeType.translucent, HostConfigHelper.ACTIVITY_PIT_COUNT_TS_SINGLE_TOP);
-        states.mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_SINGLE_TOP, LaunchModeStates.ThemeType.notTranslucent, HostConfigHelper.ACTIVITY_PIT_COUNT_NTS_SINGLE_TOP);
+        //states.mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_SINGLE_TOP, LaunchModeStates.ThemeType.translucent, HostConfigHelper.ACTIVITY_PIT_COUNT_TS_SINGLE_TOP);
+        //states.mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_SINGLE_TOP, LaunchModeStates.ThemeType.notTranslucent, HostConfigHelper.ACTIVITY_PIT_COUNT_NTS_SINGLE_TOP);
 
         // SingleTask
         states.mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_SINGLE_TASK, LaunchModeStates.ThemeType.noTheme, HostConfigHelper.ACTIVITY_PIT_COUNT_NTM_SINGLE_TASK);
-        states.mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_SINGLE_TASK, LaunchModeStates.ThemeType.translucent, HostConfigHelper.ACTIVITY_PIT_COUNT_TS_SINGLE_TASK);
-        states.mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_SINGLE_TASK, LaunchModeStates.ThemeType.notTranslucent, HostConfigHelper.ACTIVITY_PIT_COUNT_NTS_SINGLE_TASK);
+        //states.mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_SINGLE_TASK, LaunchModeStates.ThemeType.translucent, HostConfigHelper.ACTIVITY_PIT_COUNT_TS_SINGLE_TASK);
+        //states.mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_SINGLE_TASK, LaunchModeStates.ThemeType.notTranslucent, HostConfigHelper.ACTIVITY_PIT_COUNT_NTS_SINGLE_TASK);
 
         // SingleInstance
         states.mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_SINGLE_INSTANCE, LaunchModeStates.ThemeType.noTheme, HostConfigHelper.ACTIVITY_PIT_COUNT_NTM_SINGLE_INSTANCE);
-        states.mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_SINGLE_INSTANCE, LaunchModeStates.ThemeType.translucent, HostConfigHelper.ACTIVITY_PIT_COUNT_TS_SINGLE_INSTANCE);
-        states.mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_SINGLE_INSTANCE, LaunchModeStates.ThemeType.notTranslucent, HostConfigHelper.ACTIVITY_PIT_COUNT_NTS_SINGLE_INSTANCE);
+        //states.mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_SINGLE_INSTANCE, LaunchModeStates.ThemeType.translucent, HostConfigHelper.ACTIVITY_PIT_COUNT_TS_SINGLE_INSTANCE);
+        //states.mLaunchModeStates.addStates(mStates, containers, prefix + suffix, LAUNCH_SINGLE_INSTANCE, LaunchModeStates.ThemeType.notTranslucent, HostConfigHelper.ACTIVITY_PIT_COUNT_NTS_SINGLE_INSTANCE);
 
         // taskAffinity
         states.mTaskAffinityStates.init(prefix, suffix, mStates, containers);
