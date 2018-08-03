@@ -93,6 +93,9 @@ public class PluginContext extends ContextThemeWrapper {
         mLoader = loader;
 
         mContextInjector = RePlugin.getConfig().getCallbacks().createContextInjector();
+
+        // webview 插件化后对资源的统一处理
+        WebViewResourceHelper.addChromeResourceIfNeeded(this);
     }
 
     @Override
