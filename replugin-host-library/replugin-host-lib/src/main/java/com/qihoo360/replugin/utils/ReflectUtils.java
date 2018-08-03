@@ -17,9 +17,7 @@
 package com.qihoo360.replugin.utils;
 
 import android.content.Context;
-
 import com.qihoo360.replugin.helper.LogRelease;
-
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.lang.reflect.AccessibleObject;
@@ -227,6 +225,25 @@ public final class ReflectUtils {
             if (med != null) {
                 med.setAccessible(true);
                 return med.invoke(methodReceiver, methodParamValues);
+            }
+        }
+        return null;
+    }
+
+    public static Object invokeStaticMethod(String clzName, String methodName, Class<?>[] methodParamTypes, Object... methodParamValues) {
+        try {
+            Class clz = Class.forName(clzName);
+            if (clz != null) {
+                Method med = clz.getDeclaredMethod(methodName, methodParamTypes);
+                if (med != null) {
+                    med.setAccessible(true);
+                    Object retObj = med.invoke(null, methodParamValues);
+                    return retObj;
+                }
+            }
+        } catch (Exception e) {
+            if (LOGR) {
+                LogRelease.e(MISC_TAG, e.getMessage(), e);
             }
         }
         return null;
