@@ -19,6 +19,7 @@ package com.qihoo360.replugin;
 import android.app.Application;
 import android.content.Context;
 import android.content.res.Configuration;
+import com.qihoo360.replugin.packages.HookPackageManager;
 
 /**
  * 方便宿主直接继承RePluginApplication来完成插件框架的注册 <p>
@@ -53,6 +54,8 @@ public class RePluginApplication extends Application {
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
+
+        HookPackageManager.hookPackageManager(base);
 
         RePluginConfig c = createConfig();
         if (c == null) {
