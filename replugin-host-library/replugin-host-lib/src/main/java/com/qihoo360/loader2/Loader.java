@@ -28,7 +28,6 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.text.TextUtils;
 import android.util.Log;
-
 import com.qihoo360.i.Factory;
 import com.qihoo360.i.IModule;
 import com.qihoo360.i.IPlugin;
@@ -42,11 +41,7 @@ import com.qihoo360.replugin.component.receiver.PluginReceiverProxy;
 import com.qihoo360.replugin.helper.LogDebug;
 import com.qihoo360.replugin.helper.LogRelease;
 import com.qihoo360.replugin.model.PluginInfo;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
+import com.qihoo360.replugin.packages.HookLibPath;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Constructor;
@@ -58,6 +53,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import static com.qihoo360.replugin.helper.LogDebug.LOADER_TAG;
 import static com.qihoo360.replugin.helper.LogDebug.LOG;
@@ -335,6 +333,11 @@ class Loader {
                         LogDebug.d(PLUGIN_TAG, "get dex null");
                     }
                     return false;
+                }
+
+                //如果允许插件的so在主工程查找，则将主工程so查找路径加到classloader
+                if (RePlugin.getConfig().isUseHostSoClassIfNotFound()) {
+                    mClassLoader = HookLibPath.hookPluginDexClassLoader(mClassLoader);
                 }
 
                 if (LOG) {

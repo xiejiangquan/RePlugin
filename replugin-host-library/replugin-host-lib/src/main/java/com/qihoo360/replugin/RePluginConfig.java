@@ -44,6 +44,7 @@ public final class RePluginConfig {
     private boolean persistentEnable = true;
 
     private boolean useHostClassIfNotFound = false;
+    private boolean useHostSoClassIfNotFound = false;
     private boolean moveFileWhenInstalling = true;
     private boolean printDetailLog = false;
     private int defaultFrameworkVersion = 4;
@@ -173,6 +174,23 @@ public final class RePluginConfig {
             return this;
         }
         this.useHostClassIfNotFound = useHostClassIfNotFound;
+        return this;
+    }
+
+    /**
+     * 插件so是否允许在host里面查找，方便减小插件包大小
+     * @return
+     */
+    public boolean isUseHostSoClassIfNotFound() {
+        return useHostSoClassIfNotFound;
+    }
+
+    /**
+     * 设置插件so是否允许在host里面查找，方便减小插件包大小
+     * @param useHostSoClassIfNotFound
+     */
+    public RePluginConfig setUseHostSoClassIfNotFound(boolean useHostSoClassIfNotFound) {
+        this.useHostSoClassIfNotFound = useHostSoClassIfNotFound;
         return this;
     }
 
