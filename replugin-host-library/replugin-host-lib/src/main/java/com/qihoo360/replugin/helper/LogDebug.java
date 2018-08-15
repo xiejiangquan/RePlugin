@@ -18,8 +18,6 @@ package com.qihoo360.replugin.helper;
 
 import android.os.Build;
 import android.os.Debug;
-import android.util.Log;
-
 import com.qihoo360.replugin.RePluginInternal;
 import com.qihoo360.replugin.base.IPC;
 import com.qihoo360.replugin.model.PluginInfo;
@@ -36,6 +34,14 @@ public class LogDebug {
     public static final String TAG = "RePlugin";
 
     private static final String TAG_PREFIX = TAG + ".";
+
+    private static ILogger sLogger = new LogProxy(RePluginInternal.FOR_DEV, new DefaultLogImpl());
+
+    public static void setLogger(ILogger logger) {
+        if (null != logger) {
+            sLogger = new LogProxy(RePluginInternal.FOR_DEV, logger);
+        }
+    }
 
     /**
      * 是否输出日志？若用的是nolog编译出的AAR，则这里为False
@@ -62,10 +68,7 @@ public class LogDebug {
      * @param msg The message you would like logged.
      */
     public static int v(String tag, String msg) {
-        if (RePluginInternal.FOR_DEV) {
-            return Log.v(TAG_PREFIX + tag, msg);
-        }
-        return -1;
+        return sLogger.v(TAG_PREFIX + tag, msg);
     }
 
     /**
@@ -77,10 +80,7 @@ public class LogDebug {
      * @param tr  An exception to log
      */
     public static int v(String tag, String msg, Throwable tr) {
-        if (RePluginInternal.FOR_DEV) {
-            return Log.v(TAG_PREFIX + tag, msg, tr);
-        }
-        return -1;
+        return sLogger.v(TAG_PREFIX + tag, msg, tr);
     }
 
     /**
@@ -91,10 +91,7 @@ public class LogDebug {
      * @param msg The message you would like logged.
      */
     public static int d(String tag, String msg) {
-        if (RePluginInternal.FOR_DEV) {
-            return Log.d(TAG_PREFIX + tag, msg);
-        }
-        return -1;
+        return sLogger.d(TAG_PREFIX + tag, msg);
     }
 
     /**
@@ -106,10 +103,7 @@ public class LogDebug {
      * @param tr  An exception to log
      */
     public static int d(String tag, String msg, Throwable tr) {
-        if (RePluginInternal.FOR_DEV) {
-            return Log.d(TAG_PREFIX + tag, msg, tr);
-        }
-        return -1;
+        return sLogger.d(TAG_PREFIX + tag, msg, tr);
     }
 
     /**
@@ -120,10 +114,7 @@ public class LogDebug {
      * @param msg The message you would like logged.
      */
     public static int i(String tag, String msg) {
-        if (RePluginInternal.FOR_DEV) {
-            return Log.i(TAG_PREFIX + tag, msg);
-        }
-        return -1;
+        return sLogger.i(TAG_PREFIX + tag, msg);
     }
 
     /**
@@ -135,10 +126,7 @@ public class LogDebug {
      * @param tr  An exception to log
      */
     public static int i(String tag, String msg, Throwable tr) {
-        if (RePluginInternal.FOR_DEV) {
-            return Log.i(TAG_PREFIX + tag, msg, tr);
-        }
-        return -1;
+        return sLogger.i(TAG_PREFIX + tag, msg, tr);
     }
 
     /**
@@ -149,10 +137,7 @@ public class LogDebug {
      * @param msg The message you would like logged.
      */
     public static int w(String tag, String msg) {
-        if (RePluginInternal.FOR_DEV) {
-            return Log.w(TAG_PREFIX + tag, msg);
-        }
-        return -1;
+        return sLogger.w(TAG_PREFIX + tag, msg);
     }
 
     /**
@@ -164,10 +149,7 @@ public class LogDebug {
      * @param tr  An exception to log
      */
     public static int w(String tag, String msg, Throwable tr) {
-        if (RePluginInternal.FOR_DEV) {
-            return Log.w(TAG_PREFIX + tag, msg, tr);
-        }
-        return -1;
+        return sLogger.w(TAG_PREFIX + tag, msg, tr);
     }
 
     /**
@@ -178,10 +160,7 @@ public class LogDebug {
      * @param tr  An exception to log
      */
     public static int w(String tag, Throwable tr) {
-        if (RePluginInternal.FOR_DEV) {
-            return Log.w(TAG_PREFIX + tag, tr);
-        }
-        return -1;
+        return sLogger.w(TAG_PREFIX + tag, tr);
     }
 
     /**
@@ -192,10 +171,7 @@ public class LogDebug {
      * @param msg The message you would like logged.
      */
     public static int e(String tag, String msg) {
-        if (RePluginInternal.FOR_DEV) {
-            return Log.e(TAG_PREFIX + tag, msg);
-        }
-        return -1;
+        return sLogger.e(TAG_PREFIX + tag, msg);
     }
 
     /**
@@ -207,10 +183,7 @@ public class LogDebug {
      * @param tr  An exception to log
      */
     public static int e(String tag, String msg, Throwable tr) {
-        if (RePluginInternal.FOR_DEV) {
-            return Log.e(TAG_PREFIX + tag, msg, tr);
-        }
-        return -1;
+        return sLogger.e(TAG_PREFIX + tag, msg, tr);
     }
 
     /**
@@ -231,7 +204,7 @@ public class LogDebug {
                     ", nativeSize=, " + mi.nativePss +
                     ", otherPss=, " + mi.otherPss + ", ";
 
-            return Log.i(tag + "-MEMORY", mit + msg);
+            return sLogger.i(tag + "-MEMORY", mit + msg);
         }
         return -1;
     }

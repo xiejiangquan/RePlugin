@@ -18,30 +18,17 @@ package com.qihoo360.replugin.helper;
 
 /**
  * 可同时在Debug和Release上输出的日志
+ * 
+ * log接口，给外部log依赖
  *
  * @author RePlugin Team
  */
 
-public class LogRelease {
-    /**
-     * 是否输出日志？因为这里的日志都是“必须要输出的”，故默认均为true（除非有极特殊需要）
-     * 注意：所有使用LogRelease前，必须先用此字段来做判断
-     * 如：
-     * <code>
-     * if (LogRelease.LOGR) {
-     *     LogRelease.v("xxx", "yyy");
-     * }
-     * </code>
-     */
-    public static final boolean LOGR = true;
+public interface ILogger {
 
-    private static ILogger sLogger = new LogProxy(LOGR, new DefaultLogImpl());
-    
-    public static void setLogger(ILogger logger) {
-        if (null != logger) {
-            sLogger = new LogProxy(LOGR, logger);
-        }
-    }
+    String LOG_PRFIX_TAG = "RePlugin";
+
+    String TAG_PREFIX = LOG_PRFIX_TAG + ".";
 
     /**
      * Send a verbose log message.
@@ -50,9 +37,7 @@ public class LogRelease {
      *            the class or activity where the log call occurs.
      * @param msg The message you would like logged.
      */
-    public static int v(String tag, String msg) {
-        return sLogger.v(tag, msg);
-    }
+    int v(String tag, String msg);
 
     /**
      * Send a verbose log message and log the exception.
@@ -62,9 +47,7 @@ public class LogRelease {
      * @param msg The message you would like logged.
      * @param tr  An exception to log
      */
-    public static int v(String tag, String msg, Throwable tr) {
-        return sLogger.v(tag, msg, tr);
-    }
+    int v(String tag, String msg, Throwable tr);
 
     /**
      * Send a debug log message.
@@ -73,9 +56,7 @@ public class LogRelease {
      *            the class or activity where the log call occurs.
      * @param msg The message you would like logged.
      */
-    public static int d(String tag, String msg) {
-        return sLogger.d(tag, msg);
-    }
+    int d(String tag, String msg);
 
     /**
      * Send a debug log message and log the exception.
@@ -85,9 +66,7 @@ public class LogRelease {
      * @param msg The message you would like logged.
      * @param tr  An exception to log
      */
-    public static int d(String tag, String msg, Throwable tr) {
-        return sLogger.d(tag, msg, tr);
-    }
+    int d(String tag, String msg, Throwable tr);
 
     /**
      * Send an info log message.
@@ -96,9 +75,7 @@ public class LogRelease {
      *            the class or activity where the log call occurs.
      * @param msg The message you would like logged.
      */
-    public static int i(String tag, String msg) {
-        return sLogger.i(tag, msg);
-    }
+    int i(String tag, String msg);
 
     /**
      * Send a inifo log message and log the exception.
@@ -108,9 +85,7 @@ public class LogRelease {
      * @param msg The message you would like logged.
      * @param tr  An exception to log
      */
-    public static int i(String tag, String msg, Throwable tr) {
-        return sLogger.i(tag, msg, tr);
-    }
+    int i(String tag, String msg, Throwable tr);
 
     /**
      * Send a warning log message.
@@ -119,9 +94,7 @@ public class LogRelease {
      *            the class or activity where the log call occurs.
      * @param msg The message you would like logged.
      */
-    public static int w(String tag, String msg) {
-        return sLogger.w(tag, msg);
-    }
+    int w(String tag, String msg);
 
     /**
      * Send a warning log message and log the exception.
@@ -131,9 +104,7 @@ public class LogRelease {
      * @param msg The message you would like logged.
      * @param tr  An exception to log
      */
-    public static int w(String tag, String msg, Throwable tr) {
-        return sLogger.w(tag, msg, tr);
-    }
+    int w(String tag, String msg, Throwable tr);
 
     /**
      * Send a warning log message and log the exception.
@@ -142,9 +113,7 @@ public class LogRelease {
      *            the class or activity where the log call occurs.
      * @param tr  An exception to log
      */
-    public static int w(String tag, Throwable tr) {
-        return sLogger.w(tag, tr);
-    }
+    int w(String tag, Throwable tr);
 
     /**
      * Send an error log message.
@@ -153,9 +122,7 @@ public class LogRelease {
      *            the class or activity where the log call occurs.
      * @param msg The message you would like logged.
      */
-    public static int e(String tag, String msg) {
-        return sLogger.e(tag, msg);
-    }
+    int e(String tag, String msg) ;
 
     /**
      * Send a error log message and log the exception.
@@ -165,7 +132,5 @@ public class LogRelease {
      * @param msg The message you would like logged.
      * @param tr  An exception to log
      */
-    public static int e(String tag, String msg, Throwable tr) {
-        return sLogger.e(tag, msg, tr);
-    }
+    int e(String tag, String msg, Throwable tr);
 }

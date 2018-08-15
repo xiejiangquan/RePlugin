@@ -16,156 +16,152 @@
 
 package com.qihoo360.replugin.helper;
 
+import android.util.Log;
+
 /**
- * 可同时在Debug和Release上输出的日志
+ * 只在Debug环境下才输出的各种日志，只有当setDebug为true时才会出来
+ * <p>
+ * 注意：Release版不会输出，而且会被Proguard删除掉
  *
  * @author RePlugin Team
  */
 
-public class LogRelease {
-    /**
-     * 是否输出日志？因为这里的日志都是“必须要输出的”，故默认均为true（除非有极特殊需要）
-     * 注意：所有使用LogRelease前，必须先用此字段来做判断
-     * 如：
-     * <code>
-     * if (LogRelease.LOGR) {
-     *     LogRelease.v("xxx", "yyy");
-     * }
-     * </code>
-     */
-    public static final boolean LOGR = true;
-
-    private static ILogger sLogger = new LogProxy(LOGR, new DefaultLogImpl());
-    
-    public static void setLogger(ILogger logger) {
-        if (null != logger) {
-            sLogger = new LogProxy(LOGR, logger);
-        }
-    }
+class DefaultLogImpl implements ILogger {
 
     /**
      * Send a verbose log message.
      *
      * @param tag Used to identify the source of a log message.  It usually identifies
-     *            the class or activity where the log call occurs.
+     * the class or activity where the log call occurs.
      * @param msg The message you would like logged.
      */
-    public static int v(String tag, String msg) {
-        return sLogger.v(tag, msg);
+    @Override
+    public int v(String tag, String msg) {
+        return Log.v(TAG_PREFIX + tag, msg);
     }
 
     /**
      * Send a verbose log message and log the exception.
      *
      * @param tag Used to identify the source of a log message.  It usually identifies
-     *            the class or activity where the log call occurs.
+     * the class or activity where the log call occurs.
      * @param msg The message you would like logged.
-     * @param tr  An exception to log
+     * @param tr An exception to log
      */
-    public static int v(String tag, String msg, Throwable tr) {
-        return sLogger.v(tag, msg, tr);
+    @Override
+    public int v(String tag, String msg, Throwable tr) {
+        return Log.v(TAG_PREFIX + tag, msg, tr);
     }
 
     /**
      * Send a debug log message.
      *
      * @param tag Used to identify the source of a log message.  It usually identifies
-     *            the class or activity where the log call occurs.
+     * the class or activity where the log call occurs.
      * @param msg The message you would like logged.
      */
-    public static int d(String tag, String msg) {
-        return sLogger.d(tag, msg);
+    @Override
+    public int d(String tag, String msg) {
+        return Log.d(TAG_PREFIX + tag, msg);
     }
 
     /**
      * Send a debug log message and log the exception.
      *
      * @param tag Used to identify the source of a log message.  It usually identifies
-     *            the class or activity where the log call occurs.
+     * the class or activity where the log call occurs.
      * @param msg The message you would like logged.
-     * @param tr  An exception to log
+     * @param tr An exception to log
      */
-    public static int d(String tag, String msg, Throwable tr) {
-        return sLogger.d(tag, msg, tr);
+    @Override
+    public int d(String tag, String msg, Throwable tr) {
+        return Log.d(TAG_PREFIX + tag, msg, tr);
     }
 
     /**
      * Send an info log message.
      *
      * @param tag Used to identify the source of a log message.  It usually identifies
-     *            the class or activity where the log call occurs.
+     * the class or activity where the log call occurs.
      * @param msg The message you would like logged.
      */
-    public static int i(String tag, String msg) {
-        return sLogger.i(tag, msg);
+    @Override
+    public int i(String tag, String msg) {
+        return Log.i(TAG_PREFIX + tag, msg);
     }
 
     /**
      * Send a inifo log message and log the exception.
      *
      * @param tag Used to identify the source of a log message.  It usually identifies
-     *            the class or activity where the log call occurs.
+     * the class or activity where the log call occurs.
      * @param msg The message you would like logged.
-     * @param tr  An exception to log
+     * @param tr An exception to log
      */
-    public static int i(String tag, String msg, Throwable tr) {
-        return sLogger.i(tag, msg, tr);
+    @Override
+    public int i(String tag, String msg, Throwable tr) {
+        return Log.i(TAG_PREFIX + tag, msg, tr);
     }
 
     /**
      * Send a warning log message.
      *
      * @param tag Used to identify the source of a log message.  It usually identifies
-     *            the class or activity where the log call occurs.
+     * the class or activity where the log call occurs.
      * @param msg The message you would like logged.
      */
-    public static int w(String tag, String msg) {
-        return sLogger.w(tag, msg);
+    @Override
+    public int w(String tag, String msg) {
+        return Log.w(TAG_PREFIX + tag, msg);
     }
 
     /**
      * Send a warning log message and log the exception.
      *
      * @param tag Used to identify the source of a log message.  It usually identifies
-     *            the class or activity where the log call occurs.
+     * the class or activity where the log call occurs.
      * @param msg The message you would like logged.
-     * @param tr  An exception to log
+     * @param tr An exception to log
      */
-    public static int w(String tag, String msg, Throwable tr) {
-        return sLogger.w(tag, msg, tr);
+    @Override
+    public int w(String tag, String msg, Throwable tr) {
+        return Log.w(TAG_PREFIX + tag, msg, tr);
     }
 
     /**
      * Send a warning log message and log the exception.
      *
      * @param tag Used to identify the source of a log message.  It usually identifies
-     *            the class or activity where the log call occurs.
-     * @param tr  An exception to log
+     * the class or activity where the log call occurs.
+     * @param tr An exception to log
      */
-    public static int w(String tag, Throwable tr) {
-        return sLogger.w(tag, tr);
+    @Override
+    public int w(String tag, Throwable tr) {
+        return Log.w(TAG_PREFIX + tag, tr);
     }
 
     /**
      * Send an error log message.
      *
      * @param tag Used to identify the source of a log message.  It usually identifies
-     *            the class or activity where the log call occurs.
+     * the class or activity where the log call occurs.
      * @param msg The message you would like logged.
      */
-    public static int e(String tag, String msg) {
-        return sLogger.e(tag, msg);
+    @Override
+    public int e(String tag, String msg) {
+        return Log.e(TAG_PREFIX + tag, msg);
     }
 
     /**
      * Send a error log message and log the exception.
      *
      * @param tag Used to identify the source of a log message.  It usually identifies
-     *            the class or activity where the log call occurs.
+     * the class or activity where the log call occurs.
      * @param msg The message you would like logged.
-     * @param tr  An exception to log
+     * @param tr An exception to log
      */
-    public static int e(String tag, String msg, Throwable tr) {
-        return sLogger.e(tag, msg, tr);
+    @Override
+    public int e(String tag, String msg, Throwable tr) {
+        return Log.e(TAG_PREFIX + tag, msg, tr);
     }
 }
