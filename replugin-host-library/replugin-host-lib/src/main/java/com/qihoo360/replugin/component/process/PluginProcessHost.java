@@ -32,9 +32,9 @@ import java.util.Map;
 public class PluginProcessHost {
 
     /**
-     * 自定义插件的数量，暂时只支持3个自定义进程
+     * 自定义插件的数量，暂时只支持10个自定义进程
      */
-    public static final int PROCESS_COUNT = 3;
+    public static final int PROCESS_COUNT = 10;
 
     /**
      * 自定义进程，int 标识，从 -100 开始，每次加 1；

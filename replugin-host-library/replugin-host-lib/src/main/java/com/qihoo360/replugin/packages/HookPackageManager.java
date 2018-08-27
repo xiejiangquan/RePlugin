@@ -2,11 +2,17 @@ package com.qihoo360.replugin.packages;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.text.TextUtils;
 import android.util.Log;
+import com.qihoo360.replugin.RePlugin;
+import com.qihoo360.replugin.model.PluginInfo;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 创建时间：2018/08/05/11:58
@@ -60,21 +66,48 @@ public class HookPackageManager {
 
         String hostPackageName;
 
+        private final Map<String, String> installedPackageNameMap;
+
         public HookHandler(Object oldPM, String hostPackageName) {
             this.oldPM = oldPM;
             this.hostPackageName = hostPackageName;
+            this.installedPackageNameMap = new HashMap<>();
         }
 
         @Override
         public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-            if (method.getName().equals("getApplicationInfo")) {
+            if (method.getName().equals("getApplicationInfo") && null != args[0]) {
                 Object result = method.invoke(oldPM, args);
                 if (null != result) {
                     return result;
                 }
-                Log.i(TAG, "getApplicationInfo error, appName : " + args[0] + ", try replace with hostPackageName :" + hostPackageName);
-                args[0] = hostPackageName;
-                return method.invoke(oldPM, args);
+
+                //缓存
+                if (installedPackageNameMap.isEmpty()) {
+                    List<PluginInfo> pluginInfos = RePlugin.getPluginInfoList();
+
+                    if (null != pluginInfos) {
+                        for (PluginInfo pluginInfo : pluginInfos) {
+                            if (null != pluginInfo) {
+                                continue;
+                            }
+                            final String packageName = pluginInfo.getPackageName();
+                            if (!TextUtils.isEmpty(packageName)) {
+                                installedPackageNameMap.put(packageName, packageName);
+                            }
+                        }
+                    }
+                }
+
+                if (args[0] instanceof String) {
+                    if (installedPackageNameMap.containsKey(args[0])) {
+                        Log.i(TAG, "getApplicationInfo error, appName : " + args[0] + ", try replace with hostPackageName :" + hostPackageName);
+                        args[0] = hostPackageName;
+                        return method.invoke(oldPM, args);
+                    }
+                }
+
+                return result;
             }
             return method.invoke(oldPM, args);
         }
