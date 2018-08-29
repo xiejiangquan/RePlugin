@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.RepluginCompactTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!--处理部分机型闪屏问题eg. MEIZU PRO 7-->
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@color/transparent</item>
+    </style>
+</resources>
