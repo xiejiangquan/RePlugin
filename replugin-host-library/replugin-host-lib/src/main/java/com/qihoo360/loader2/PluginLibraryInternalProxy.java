@@ -28,6 +28,7 @@ import android.text.TextUtils;
 import com.qihoo360.i.Factory;
 import com.qihoo360.i.Factory2;
 import com.qihoo360.i.IPluginManager;
+import com.qihoo360.mobilesafe.api.AppVar;
 import com.qihoo360.replugin.RePlugin;
 import com.qihoo360.replugin.base.IPC;
 import com.qihoo360.replugin.component.activity.ActivityInjector;
@@ -742,7 +743,11 @@ public class PluginLibraryInternalProxy {
 
         try {
             String typeName = activity.getResources().getResourceTypeName(dynamicThemeId);
-            if (TextUtils.equals(typeName, "style")) {
+            //如果插件框架动态主题是host系统主题，则动态主题失效
+            if (dynamicThemeId == AppVar.sAppContext.getApplicationInfo().theme) {
+                isDynamicThemeIdValide = false;
+                activity.getTheme().setTo(activity.getBaseContext().getTheme());
+            } else if (TextUtils.equals(typeName, "style")) {
                 isDynamicThemeIdValide = true;
             }
         } catch (Exception e) {
