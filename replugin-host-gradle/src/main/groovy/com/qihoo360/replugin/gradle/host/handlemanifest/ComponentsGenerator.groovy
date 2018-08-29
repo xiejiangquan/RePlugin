@@ -45,6 +45,7 @@ class ComponentsGenerator {
     def static final themeTS = '@android:style/Theme.Translucent.NoTitleBar'
 
     def static final THEME_NTS_USE_APP_COMPAT = '@style/Theme.AppCompat'
+    def static final THEME_NTS_USE_APP_COMPAT_TS = '@style/Theme.RepluginCompactTheme'
     def static final THEME_NTS_NOT_USE_APP_COMPAT = '@android:style/Theme.NoTitleBar'
     def static themeNTS = THEME_NTS_NOT_USE_APP_COMPAT
 
@@ -58,11 +59,10 @@ class ComponentsGenerator {
     def static generateComponent(def applicationID, def config) {
         // 是否使用 AppCompat 库（涉及到默认主题）
         if (config.useAppCompat) {
-            themeNTS = THEME_NTS_USE_APP_COMPAT
+            themeNTS = THEME_NTS_USE_APP_COMPAT_TS
         } else {
             themeNTS = THEME_NTS_NOT_USE_APP_COMPAT
         }
-
         def writer = new StringWriter()
         def xml = new MarkupBuilder(writer)
 
@@ -104,7 +104,8 @@ class ComponentsGenerator {
                     "${name}": "${applicationID}.${infix}N1NRNTM${it}",
                     "${cfg}": "${cfgV}",
                     "${exp}": "${expV}",
-                    "${ori}": "${oriV}"
+                    "${ori}": "${oriV}",
+                    "${theme}": "${themeNTS}"
                 )
             }
             config.countNoThemeSingleTop.times {
@@ -113,6 +114,7 @@ class ComponentsGenerator {
                     "${cfg}": "${cfgV}",
                     "${exp}": "${expV}",
                     "${ori}": "${oriV}",
+                    "${theme}": "${themeNTS}",
                     "${launchMode}": "singleTop"
                 )
             }
@@ -122,6 +124,7 @@ class ComponentsGenerator {
                     "${cfg}": "${cfgV}",
                     "${exp}": "${expV}",
                     "${ori}": "${oriV}",
+                    "${theme}": "${themeNTS}",
                     "${launchMode}": "singleTask")
             }
             config.countNoThemeSingleInstance.times {
@@ -130,6 +133,7 @@ class ComponentsGenerator {
                     "${cfg}": "${cfgV}",
                     "${exp}": "${expV}",
                     "${ori}": "${oriV}",
+                    "${theme}": "${themeNTS}",
                     "${launchMode}": "singleInstance")
             }
 
@@ -220,6 +224,7 @@ class ComponentsGenerator {
                         "${cfg}": "${cfgV}",
                         "${exp}": "${expV}",
                         "${ori}": "${oriV}",
+                        "${theme}": "${themeNTS}",
                         "${task}": ":t${i}")
                 }
                 config.countNoThemeSingleTop.times { j ->
@@ -228,6 +233,7 @@ class ComponentsGenerator {
                         "${cfg}": "${cfgV}",
                         "${exp}": "${expV}",
                         "${ori}": "${oriV}",
+                        "${theme}": "${themeNTS}",
                         "${task}": ":t${i}",
                         "${launchMode}": "singleTop")
                 }
@@ -237,6 +243,7 @@ class ComponentsGenerator {
                         "${cfg}": "${cfgV}",
                         "${exp}": "${expV}",
                         "${ori}": "${oriV}",
+                        "${theme}": "${themeNTS}",
                         "${task}": ":t${i}",
                         "${launchMode}": "singleTask")
                 }
@@ -340,6 +347,7 @@ class ComponentsGenerator {
                         "${cfg}": "${cfgV}",
                         "${exp}": "${expV}",
                         "${ori}": "${oriV}",
+                        "${theme}": "${themeNTS}",
                         "${process}": ":p${p}")
                 }
                 config.countNoThemeSingleTop.times {
@@ -348,6 +356,7 @@ class ComponentsGenerator {
                         "${cfg}": "${cfgV}",
                         "${exp}": "${expV}",
                         "${ori}": "${oriV}",
+                        "${theme}": "${themeNTS}",
                         "${process}": ":p${p}",
                         "${launchMode}": "singleTop")
                 }
@@ -357,6 +366,7 @@ class ComponentsGenerator {
                         "${cfg}": "${cfgV}",
                         "${exp}": "${expV}",
                         "${ori}": "${oriV}",
+                        "${theme}": "${themeNTS}",
                         "${process}": ":p${p}",
                         "${launchMode}": "singleTask")
                 }
@@ -366,6 +376,7 @@ class ComponentsGenerator {
                         "${cfg}": "${cfgV}",
                         "${exp}": "${expV}",
                         "${ori}": "${oriV}",
+                        "${theme}": "${themeNTS}",
                         "${process}": ":p${p}",
                         "${launchMode}": "singleInstance")
                 }
@@ -462,6 +473,7 @@ class ComponentsGenerator {
                             "${cfg}": "${cfgV}",
                             "${exp}": "${expV}",
                             "${ori}": "${oriV}",
+                            "${theme}": "${themeNTS}",
                             "${process}": ":p${p}",
                             "${task}": ":t${i}")
                     }
@@ -471,6 +483,7 @@ class ComponentsGenerator {
                             "${cfg}": "${cfgV}",
                             "${exp}": "${expV}",
                             "${ori}": "${oriV}",
+                            "${theme}": "${themeNTS}",
                             "${launchMode}": "singleTop",
                             "${process}": ":p${p}",
                             "${task}": ":t${i}")
@@ -481,6 +494,7 @@ class ComponentsGenerator {
                             "${cfg}": "${cfgV}",
                             "${exp}": "${expV}",
                             "${ori}": "${oriV}",
+                            "${theme}": "${themeNTS}",
                             "${launchMode}": "singleTask",
                             "${process}": ":p${p}",
                             "${task}": ":t${i}")
