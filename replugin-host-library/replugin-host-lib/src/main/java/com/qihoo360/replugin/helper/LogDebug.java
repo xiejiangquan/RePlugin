@@ -33,13 +33,11 @@ import com.qihoo360.replugin.model.PluginInfo;
 public class LogDebug {
     public static final String TAG = "RePlugin";
 
-    private static final String TAG_PREFIX = TAG + ".";
-
-    private static ILogger sLogger = new LogProxy(RePluginInternal.FOR_DEV, new DefaultLogImpl());
+    private static ILogger sLogger = new LogProxy(RePluginInternal.FOR_DEV, ILogger.TAG_PREFIX, new DefaultLogImpl());
 
     public static void setLogger(ILogger logger) {
         if (null != logger) {
-            sLogger = new LogProxy(RePluginInternal.FOR_DEV, logger);
+            sLogger = new LogProxy(RePluginInternal.FOR_DEV, ILogger.TAG_PREFIX, logger);
         }
     }
 
@@ -68,7 +66,7 @@ public class LogDebug {
      * @param msg The message you would like logged.
      */
     public static int v(String tag, String msg) {
-        return sLogger.v(TAG_PREFIX + tag, msg);
+        return sLogger.v(tag, msg);
     }
 
     /**
@@ -80,7 +78,7 @@ public class LogDebug {
      * @param tr  An exception to log
      */
     public static int v(String tag, String msg, Throwable tr) {
-        return sLogger.v(TAG_PREFIX + tag, msg, tr);
+        return sLogger.v(tag, msg, tr);
     }
 
     /**
@@ -91,7 +89,7 @@ public class LogDebug {
      * @param msg The message you would like logged.
      */
     public static int d(String tag, String msg) {
-        return sLogger.d(TAG_PREFIX + tag, msg);
+        return sLogger.d(tag, msg);
     }
 
     /**
@@ -103,7 +101,7 @@ public class LogDebug {
      * @param tr  An exception to log
      */
     public static int d(String tag, String msg, Throwable tr) {
-        return sLogger.d(TAG_PREFIX + tag, msg, tr);
+        return sLogger.d(tag, msg, tr);
     }
 
     /**
@@ -114,7 +112,7 @@ public class LogDebug {
      * @param msg The message you would like logged.
      */
     public static int i(String tag, String msg) {
-        return sLogger.i(TAG_PREFIX + tag, msg);
+        return sLogger.i(tag, msg);
     }
 
     /**
@@ -126,7 +124,7 @@ public class LogDebug {
      * @param tr  An exception to log
      */
     public static int i(String tag, String msg, Throwable tr) {
-        return sLogger.i(TAG_PREFIX + tag, msg, tr);
+        return sLogger.i(tag, msg, tr);
     }
 
     /**
@@ -137,7 +135,7 @@ public class LogDebug {
      * @param msg The message you would like logged.
      */
     public static int w(String tag, String msg) {
-        return sLogger.w(TAG_PREFIX + tag, msg);
+        return sLogger.w(tag, msg);
     }
 
     /**
@@ -149,7 +147,7 @@ public class LogDebug {
      * @param tr  An exception to log
      */
     public static int w(String tag, String msg, Throwable tr) {
-        return sLogger.w(TAG_PREFIX + tag, msg, tr);
+        return sLogger.w(tag, msg, tr);
     }
 
     /**
@@ -160,7 +158,7 @@ public class LogDebug {
      * @param tr  An exception to log
      */
     public static int w(String tag, Throwable tr) {
-        return sLogger.w(TAG_PREFIX + tag, tr);
+        return sLogger.w(tag, tr);
     }
 
     /**
@@ -171,7 +169,7 @@ public class LogDebug {
      * @param msg The message you would like logged.
      */
     public static int e(String tag, String msg) {
-        return sLogger.e(TAG_PREFIX + tag, msg);
+        return sLogger.e(tag, msg);
     }
 
     /**
@@ -183,7 +181,7 @@ public class LogDebug {
      * @param tr  An exception to log
      */
     public static int e(String tag, String msg, Throwable tr) {
-        return sLogger.e(TAG_PREFIX + tag, msg, tr);
+        return sLogger.e(tag, msg, tr);
     }
 
     /**

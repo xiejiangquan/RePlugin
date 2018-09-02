@@ -27,12 +27,15 @@ package com.qihoo360.replugin.helper;
 class LogProxy implements ILogger {
 
     private boolean printLog;
+    
+    private String tagPrefix;
 
     private ILogger mLogger;
 
-    LogProxy(boolean printLog, ILogger logger) {
+    LogProxy(boolean printLog, String tagPrefix, ILogger logger) {
         this.printLog = printLog;
         this.mLogger = logger;
+        this.tagPrefix = tagPrefix;
     }
 
     /**
@@ -44,7 +47,7 @@ class LogProxy implements ILogger {
      */
     @Override
     public int v(String tag, String msg) {
-        return printLog ? mLogger.v(TAG_PREFIX + tag, msg) : -1;
+        return printLog ? mLogger.v(tagPrefix + tag, msg) : -1;
     }
 
     /**
@@ -57,7 +60,7 @@ class LogProxy implements ILogger {
      */
     @Override
     public int v(String tag, String msg, Throwable tr) {
-        return printLog ? mLogger.v(TAG_PREFIX + tag, msg, tr) : -1;
+        return printLog ? mLogger.v(tagPrefix + tag, msg, tr) : -1;
     }
 
     /**
@@ -69,7 +72,7 @@ class LogProxy implements ILogger {
      */
     @Override
     public int d(String tag, String msg) {
-        return printLog ? mLogger.d(TAG_PREFIX + tag, msg) : -1;
+        return printLog ? mLogger.d(tagPrefix + tag, msg) : -1;
     }
 
     /**
@@ -82,7 +85,7 @@ class LogProxy implements ILogger {
      */
     @Override
     public int d(String tag, String msg, Throwable tr) {
-        return printLog ? mLogger.d(TAG_PREFIX + tag, msg, tr) : -1;
+        return printLog ? mLogger.d(tagPrefix + tag, msg, tr) : -1;
     }
 
     /**
@@ -94,7 +97,7 @@ class LogProxy implements ILogger {
      */
     @Override
     public int i(String tag, String msg) {
-        return printLog ? mLogger.i(TAG_PREFIX + tag, msg) : -1;
+        return printLog ? mLogger.i(tagPrefix + tag, msg) : -1;
     }
 
     /**
@@ -107,7 +110,7 @@ class LogProxy implements ILogger {
      */
     @Override
     public int i(String tag, String msg, Throwable tr) {
-        return printLog ? mLogger.i(TAG_PREFIX + tag, msg, tr) : -1;
+        return printLog ? mLogger.i(tagPrefix + tag, msg, tr) : -1;
     }
 
     /**
@@ -119,7 +122,7 @@ class LogProxy implements ILogger {
      */
     @Override
     public int w(String tag, String msg) {
-        return printLog ? mLogger.w(TAG_PREFIX + tag, msg) : -1;
+        return printLog ? mLogger.w(tagPrefix + tag, msg) : -1;
     }
 
     /**
@@ -132,7 +135,7 @@ class LogProxy implements ILogger {
      */
     @Override
     public int w(String tag, String msg, Throwable tr) {
-        return printLog ? mLogger.w(TAG_PREFIX + tag, msg, tr) : -1;
+        return printLog ? mLogger.w(tagPrefix + tag, msg, tr) : -1;
     }
 
     /**
@@ -144,7 +147,7 @@ class LogProxy implements ILogger {
      */
     @Override
     public int w(String tag, Throwable tr) {
-        return printLog ? mLogger.w(TAG_PREFIX + tag, tr) : -1;
+        return printLog ? mLogger.w(tagPrefix + tag, tr) : -1;
     }
 
     /**
@@ -156,7 +159,7 @@ class LogProxy implements ILogger {
      */
     @Override
     public int e(String tag, String msg) {
-        return printLog ? mLogger.e(TAG_PREFIX + tag, msg) : -1;
+        return printLog ? mLogger.e(tagPrefix + tag, msg) : -1;
     }
 
     /**
@@ -169,6 +172,6 @@ class LogProxy implements ILogger {
      */
     @Override
     public int e(String tag, String msg, Throwable tr) {
-        return printLog ? mLogger.e(TAG_PREFIX + tag, msg, tr) : -1;
+        return printLog ? mLogger.e(tagPrefix + tag, msg, tr) : -1;
     }
 }

@@ -35,11 +35,11 @@ public class LogRelease {
      */
     public static final boolean LOGR = true;
 
-    private static ILogger sLogger = new LogProxy(LOGR, new DefaultLogImpl());
+    private static ILogger sLogger = new LogProxy(LOGR, ILogger.TAG_PREFIX, new DefaultLogImpl());
     
     public static void setLogger(ILogger logger) {
         if (null != logger) {
-            sLogger = new LogProxy(LOGR, logger);
+            sLogger = new LogProxy(LOGR, ILogger.TAG_PREFIX, logger);
         }
     }
 

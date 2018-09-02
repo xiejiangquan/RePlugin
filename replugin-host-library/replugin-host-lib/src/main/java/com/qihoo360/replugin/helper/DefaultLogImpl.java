@@ -37,7 +37,7 @@ class DefaultLogImpl implements ILogger {
      */
     @Override
     public int v(String tag, String msg) {
-        return Log.v(TAG_PREFIX + tag, msg);
+        return Log.v(tag, msg);
     }
 
     /**
@@ -50,7 +50,7 @@ class DefaultLogImpl implements ILogger {
      */
     @Override
     public int v(String tag, String msg, Throwable tr) {
-        return Log.v(TAG_PREFIX + tag, msg, tr);
+        return Log.v(tag, msg, tr);
     }
 
     /**
@@ -62,7 +62,7 @@ class DefaultLogImpl implements ILogger {
      */
     @Override
     public int d(String tag, String msg) {
-        return Log.d(TAG_PREFIX + tag, msg);
+        return Log.d(tag, msg);
     }
 
     /**
@@ -75,7 +75,7 @@ class DefaultLogImpl implements ILogger {
      */
     @Override
     public int d(String tag, String msg, Throwable tr) {
-        return Log.d(TAG_PREFIX + tag, msg, tr);
+        return Log.d(tag, msg, tr);
     }
 
     /**
@@ -87,7 +87,7 @@ class DefaultLogImpl implements ILogger {
      */
     @Override
     public int i(String tag, String msg) {
-        return Log.i(TAG_PREFIX + tag, msg);
+        return Log.i(tag, msg);
     }
 
     /**
@@ -100,7 +100,7 @@ class DefaultLogImpl implements ILogger {
      */
     @Override
     public int i(String tag, String msg, Throwable tr) {
-        return Log.i(TAG_PREFIX + tag, msg, tr);
+        return Log.i(tag, msg, tr);
     }
 
     /**
@@ -112,7 +112,7 @@ class DefaultLogImpl implements ILogger {
      */
     @Override
     public int w(String tag, String msg) {
-        return Log.w(TAG_PREFIX + tag, msg);
+        return Log.w(tag, msg);
     }
 
     /**
@@ -125,7 +125,7 @@ class DefaultLogImpl implements ILogger {
      */
     @Override
     public int w(String tag, String msg, Throwable tr) {
-        return Log.w(TAG_PREFIX + tag, msg, tr);
+        return Log.w(tag, msg, tr);
     }
 
     /**
@@ -137,7 +137,7 @@ class DefaultLogImpl implements ILogger {
      */
     @Override
     public int w(String tag, Throwable tr) {
-        return Log.w(TAG_PREFIX + tag, tr);
+        return Log.w(tag, tr);
     }
 
     /**
@@ -149,7 +149,7 @@ class DefaultLogImpl implements ILogger {
      */
     @Override
     public int e(String tag, String msg) {
-        return Log.e(TAG_PREFIX + tag, msg);
+        return Log.e(tag, msg);
     }
 
     /**
@@ -162,6 +162,6 @@ class DefaultLogImpl implements ILogger {
      */
     @Override
     public int e(String tag, String msg, Throwable tr) {
-        return Log.e(TAG_PREFIX + tag, msg, tr);
+        return Log.e(tag, msg, tr);
     }
 }
