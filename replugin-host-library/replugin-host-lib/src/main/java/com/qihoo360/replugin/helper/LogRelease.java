@@ -37,9 +37,9 @@ public class LogRelease {
 
     private static ILogger sLogger = new LogProxy(LOGR, ILogger.TAG_PREFIX, new DefaultLogImpl());
     
-    public static void setLogger(ILogger logger) {
+    public static void setLogger(boolean printLog, ILogger logger) {
         if (null != logger) {
-            sLogger = new LogProxy(LOGR, ILogger.TAG_PREFIX, logger);
+            sLogger = new LogProxy(printLog, ILogger.TAG_PREFIX, logger);
         }
     }
 
