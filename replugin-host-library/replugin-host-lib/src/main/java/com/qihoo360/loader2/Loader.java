@@ -163,7 +163,7 @@ class Loader {
     }
 
     final Context createBaseContext(Context newBase) {
-        return new PluginContext(newBase, android.R.style.Theme, mClassLoader, mPkgResources, mPluginName, this);
+        return new LocalePluginContext(newBase, android.R.style.Theme, mClassLoader, mPkgResources, mPluginName, this);
     }
 
     final boolean loadDex(ClassLoader parent, int load) {
@@ -362,7 +362,7 @@ class Loader {
             }
 
             // Context
-            mPkgContext = new PluginContext(mContext, android.R.style.Theme, mClassLoader, mPkgResources, mPluginName, this);
+            mPkgContext = new LocalePluginContext(mContext, android.R.style.Theme, mClassLoader, mPkgResources, mPluginName, this);
             if (LOG) {
                 LogDebug.d(PLUGIN_TAG, "pkg context=" + mPkgContext);
             }
