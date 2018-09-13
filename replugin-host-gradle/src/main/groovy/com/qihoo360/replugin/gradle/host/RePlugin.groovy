@@ -267,7 +267,7 @@ class RepluginConfig {
     def countTranslucentSingleInstance = 3
 
     /** 宿主中声明的 TaskAffinity 的组数 */
-    def countTask = 2
+    def countTask = 5
 
     /**
      * 是否使用 AppCompat 库
