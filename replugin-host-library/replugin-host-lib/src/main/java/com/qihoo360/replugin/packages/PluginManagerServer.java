@@ -276,14 +276,18 @@ public class PluginManagerServer {
         }
         // 既然要更新到新的"纯APK"方案，自然需要把旧p-n的信息迁移到新列表中
         // FIXME 看看有没有别的兼容问题，尤其是和两个List表之间的
-        if (curPli.isPnPlugin()) {
-            mList.add(curPli);
-        }
+        //if (curPli.isPnPlugin()) {
+        //    mList.add(curPli);
+        //}
 
         // 已有“待更新版本”？
         PluginInfo curUpdatePli = curPli.getPendingUpdate();
         if (curUpdatePli != null) {
             updatePendingUpdate(curPli, instPli, curUpdatePli);
+
+            if (curPli.isPnPlugin()) {
+                mList.add(curPli);
+            }
 
             // 由于"打算要更新"的前提是插件正在被运行，且下次重启时会清空这个信息，既然这次只是替换"打算要更新"的插件信息
             // 则不必再做后面诸如"插件是否存在"等判断，直接返回即可
@@ -321,6 +325,10 @@ public class PluginManagerServer {
                 LogDebug.i(TAG, "updateOrLater: Not running. Update now! pn=" + curPli.getName());
             }
             updateNow(curPli, instPli);
+        }
+
+        if (curPli.isPnPlugin()) {
+            mList.add(curPli);
         }
     }
 
